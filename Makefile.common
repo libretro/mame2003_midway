@@ -72,8 +72,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/sound/wavwrite.c \
 				 $(CORE_DIR)/x86drc.c \
 
-HAS_MIPS3=1
-
 # the core object files (without target specific objects;
 # those are added in the target.mak files)
 
@@ -108,9 +106,6 @@ CPUS+=ADSP2104@
 CPUS+=ADSP2105@
 CPUS+=ADSP2115@
 CPUS+=ASAP@
-CPUS+=JAGUAR@
-CPUS+=R3000@
-CPUS+=R5000@
 CPUS+=DSP32C@
 
 # uncomment the following lines to include a sound core
@@ -214,7 +209,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/arcadecl_vidhrdw.c $(CORE_DIR)/drivers/arcadecl.c \
 				 $(CORE_DIR)/vidhrdw/beathead_vidhrdw.c $(CORE_DIR)/drivers/beathead.c \
 				 $(CORE_DIR)/machine/asic65.c \
-				 $(CORE_DIR)/vidhrdw/jaguar_vidhrdw.c $(CORE_DIR)/sndhrdw/jaguar_sndhrdw.c $(CORE_DIR)/drivers/cojag.c \
 				 $(CORE_DIR)/sndhrdw/cage_sndhrdw.c
 
 SOURCES_C += $(CORE_DIR)/driver.c $(CORE_DIR)/cheat.c
@@ -1091,32 +1085,12 @@ else
 CPUDEFS += -DHAS_R3000=0
 endif
 
-CPU=$(strip $(findstring R4600@,$(CPUS)))
-ifneq ($(CPU),)
-OBJDIRS += $(CORE_DIR)/cpu/mips
-CPUDEFS += -DHAS_R4600=1
-HAS_MIPS3=1
-else
-CPUDEFS += -DHAS_R4600=0
-endif
-
 CPU=$(strip $(findstring R5000@,$(CPUS)))
 ifneq ($(CPU),)
 OBJDIRS += $(CORE_DIR)/cpu/mips
 CPUDEFS += -DHAS_R5000=1
 else
 CPUDEFS += -DHAS_R5000=0
-endif
-
-ifeq ($(HAS_MIPS3),1)
-ifdef X86_MIPS3_DRC
-SOURCES_C += $(CORE_DIR)/cpu/mips/mips3drc.c
-else
-SOURCES_C += $(CORE_DIR)/cpu/mips/mips3.c
-endif
-ifeq ($(DEBUG),1)
-SOURCES_C += $(CORE_DIR)/cpu/mips/mips3dsm.c
-endif
 endif
 
 CPU=$(strip $(findstring SH2@,$(CPUS)))
