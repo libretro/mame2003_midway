@@ -973,25 +973,6 @@ static void print_mame_data(int OUTPUT_XML, FILE* out, const struct GameDriver* 
 	/* print games */
 	for(j=0;games[j];++j)
 		print_game_info(OUTPUT_XML, out, games[j]);
-
-	/* print the resources (only if linked) */
-#if !defined(MESS) && !defined(TINY_COMPILE) && !defined(MMSND)
-	PRINT_RESOURCE(OUTPUT_XML, neogeo);
-	PRINT_RESOURCE(OUTPUT_XML, cvs);
-	PRINT_RESOURCE(OUTPUT_XML, decocass);
-	PRINT_RESOURCE(OUTPUT_XML, playch10);
-	PRINT_RESOURCE(OUTPUT_XML, pgm);
-	PRINT_RESOURCE(OUTPUT_XML, skns);
-	PRINT_RESOURCE(OUTPUT_XML, stvbios);
-	PRINT_RESOURCE(OUTPUT_XML, konamigx);
-	PRINT_RESOURCE(OUTPUT_XML, nss);
-	PRINT_RESOURCE(OUTPUT_XML, megatech);
-	PRINT_RESOURCE(OUTPUT_XML, megaplay);
-	PRINT_RESOURCE(OUTPUT_XML, cpzn1);
-	PRINT_RESOURCE(OUTPUT_XML, cpzn2);
-	PRINT_RESOURCE(OUTPUT_XML, tps);
-	PRINT_RESOURCE(OUTPUT_XML, taitofx1);
-#endif
 }
 
 /* Print the MAME database in XML format */
