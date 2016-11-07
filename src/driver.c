@@ -87,41 +87,6 @@ const struct GameDriver *test_drivers[] =
 
 #else	/* DRIVER_RECURSIVE */
 
-	/* Williams games */
-	DRIVER( defender )	/* (c) 1980 */
-	DRIVER( defendg )	/* (c) 1980 */
-	DRIVER( defendw )	/* (c) 1980 */
-	DRIVER( defndjeu )	/* bootleg */
-	DRIVER( defcmnd )	/* bootleg */
-	DRIVER( defence )	/* bootleg */
-	DRIVER( mayday )
-	DRIVER( maydaya )
-	DRIVER( maydayb )
-	DRIVER( colony7 )	/* (c) 1981 Taito */
-	DRIVER( colony7a )	/* (c) 1981 Taito */
-	DRIVER( stargate )	/* (c) 1981 */
-	DRIVER( robotron )	/* (c) 1982 */
-	DRIVER( robotryo )	/* (c) 1982 */
-	DRIVER( joust )		/* (c) 1982 */
-	DRIVER( joustr )	/* (c) 1982 */
-	DRIVER( joustwr )	/* (c) 1982 */
-	DRIVER( bubbles )	/* (c) 1982 */
-	DRIVER( bubblesr )	/* (c) 1982 */
-	DRIVER( bubblesp )	/* (c) 1982 */
-	DRIVER( splat )		/* (c) 1982 */
-	DRIVER( sinistar )	/* (c) 1982 */
-	DRIVER( sinista1 )	/* (c) 1982 */
-	DRIVER( sinista2 )	/* (c) 1982 */
-	DRIVER( playball )	/* (c) 1983 */
-	DRIVER( blaster )	/* (c) 1983 */
-	DRIVER( blastkit )	/* (c) 1983 */
-	DRIVER( spdball )	/* (c) 1985 */
-	DRIVER( mysticm )	/* (c) 1983 */
-	DRIVER( tshoot )	/* (c) 1984 */
-	DRIVER( inferno )	/* (c) 1984 */
-	DRIVER( joust2 )	/* (c) 1986 */
-	DRIVER( lottofun )	/* (c) 1987 H.A.R. Management */
-
 	/* Williams/Midway games */
 	DRIVER( narc )		/* (c) 1988 Williams */
 	DRIVER( narc3 )		/* (c) 1988 Williams */

@@ -80,9 +80,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 #CPUS+=I88@
 #CPUS+=I188@
 #CPUS+=I286@
-CPUS+=M6800@
-CPUS+=M6802@
-CPUS+=M6808@
 CPUS+=M6809@
 CPUS+=M68000@
 CPUS+=M68EC020@
@@ -122,7 +119,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/midwunit_machine.c $(CORE_DIR)/drivers/midwunit.c \
 				 $(CORE_DIR)/vidhrdw/midvunit_vidhrdw.c $(CORE_DIR)/drivers/midvunit.c \
 				 $(CORE_DIR)/machine/midtunit_machine.c $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c $(CORE_DIR)/drivers/midtunit.c \
-				 $(CORE_DIR)/machine/williams_machine.c $(CORE_DIR)/vidhrdw/williams_vidhrdw.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c $(CORE_DIR)/drivers/williams.c \
 				 $(CORE_DIR)/machine/asic65.c
 
 SOURCES_C += $(CORE_DIR)/driver.c $(CORE_DIR)/cheat.c
