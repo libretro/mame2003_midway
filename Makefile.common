@@ -40,7 +40,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/sound/filter.c \
 				 $(CORE_DIR)/sound/votrax.c \
 				 $(CORE_DIR)/machine/6532riot.c \
-				 $(CORE_DIR)/machine/z80fmly.c \
 				 $(CORE_DIR)/machine/6821pia.c \
 				 $(CORE_DIR)/machine/8255ppi.c \
 				 $(CORE_DIR)/machine/7474.c \
