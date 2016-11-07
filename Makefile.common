@@ -41,10 +41,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/machine/6532riot.c \
 				 $(CORE_DIR)/machine/6821pia.c \
 				 $(CORE_DIR)/machine/8255ppi.c \
-				 $(CORE_DIR)/machine/7474.c \
-				 $(CORE_DIR)/machine/74123.c \
-				 $(CORE_DIR)/machine/74153.c \
-				 $(CORE_DIR)/machine/74148.c \
 				 $(CORE_DIR)/vidhrdw/generic.c \
 				 $(CORE_DIR)/vidhrdw/vector.c \
 				 $(CORE_DIR)/machine/ticket.c \
