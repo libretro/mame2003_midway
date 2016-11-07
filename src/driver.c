@@ -122,51 +122,6 @@ const struct GameDriver *test_drivers[] =
 	DRIVER( joust2 )	/* (c) 1986 */
 	DRIVER( lottofun )	/* (c) 1987 H.A.R. Management */
 
-	/* Atari b/w games */
-	/* Tank 8 */  		/* ??????			1976/04 [6800] */
-	DRIVER( copsnrob )	/* 005625			1976/07 [6502] */
-	DRIVER( flyball )	/* 005629			1976/07 [6502] */
-	DRIVER( sprint2 )	/* 005922			1976/11 [6502] */
-	DRIVER( sprint2a )	/* 005922			1976/11 [6502] */
-	DRIVER( sprint4 )	/* 008716			1977/12 [6502] */
-	DRIVER( sprint4a )	/* 008716			1977/12 [6502] */
-	DRIVER( nitedrvr )	/* 006321			1976/10 [6502] */
-	DRIVER( dominos )	/* 007305			1977/01 [6502] */
-	DRIVER( triplhnt )	/* 008422-008791	1977/04 [6800] */
-	DRIVER( sprint8 )	/* ??????           1977/05 [6800] */
-	DRIVER( sprint8a )	/* ??????           1977/05 [6800] */
-	DRIVER( dragrace )	/* 008505-008521	1977/06 [6800] */
-	DRIVER( poolshrk )	/* 006281			1977/06 [6800] */
-	DRIVER( starshp1 )	/* 007513-007531	1977/07 [6502] */
-	DRIVER( starshpp )	/* 007513-007531	1977/07 [6502] */
-	DRIVER( superbug )	/* 009115-009467	1977/09 [6800] */
-	DRIVER( canyon )	/* 009493-009504	1977/10 [6502] */
-	DRIVER( canyonp )	/* 009493-009504	1977/10 [6502] */
-	DRIVER( destroyr )	/* 030131-030136	1977/10 [6800] */
-	DRIVER( sprint1 )	/* 006443			1978/01 [6502] */
-	DRIVER( ultratnk )	/* 009801			1978/02 [6502] */
-	DRIVER( skyraid )	/* 009709			1978/03 [6502] */
-	DRIVER( tourtabl )	/* 030170			1978/03 [6507] */
-	DRIVER( tourtab2 )	/* 030170			1978/03 [6507] */
-	DRIVER( avalnche )	/* 030574			1978/04 [6502] */
-	DRIVER( firetrk )	/* 030926			1978/06 [6808] */
-	DRIVER( skydiver )	/* 009787			1978/06 [6800] */
-	/* Smokey Joe */	/* 030926			1978/07 [6502] */
-	DRIVER( sbrkout )	/* 033442-033455	1978/09 [6502] */
-	DRIVER( atarifb )	/* 033xxx			1978/10 [6502] */
-	DRIVER( atarifb1 )	/* 033xxx			1978/10 [6502] */
-	DRIVER( orbit )		/* 033689-033702	1978/11 [6800] */
-	DRIVER( boxer )		/* ?????? prototype 1978    [6502] */
-	DRIVER( wolfpack )	/* ?????? prototype         [6502] */
-	DRIVER( videopin )	/* 034253-034267	1979/02 [6502] */
-	DRIVER( atarifb4 )	/* 034754			1979/04 [6502] */
-	DRIVER( subs )		/* 033714			1979/05 [6502] */
-	DRIVER( bsktball )	/* 034756-034766	1979/05 [6502] */
-	DRIVER( abaseb )	/* 034711-034738	1979/06 [6502] */
-	DRIVER( abaseb2 )	/* 034711-034738	1979/06 [6502] */
-	DRIVER( montecar )	/* 035763-035780	1980/04 [6502] */
-	DRIVER( soccer )	/* 035222-035260	1980/04 [6502] */
-
 	/* Williams/Midway games */
 	DRIVER( narc )		/* (c) 1988 Williams */
 	DRIVER( narc3 )		/* (c) 1988 Williams */
