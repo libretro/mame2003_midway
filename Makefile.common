@@ -39,7 +39,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/sound/mixer.c \
 				 $(CORE_DIR)/sound/filter.c \
 				 $(CORE_DIR)/sound/votrax.c \
-				 $(CORE_DIR)/machine/tmp68301.c \
 				 $(CORE_DIR)/machine/6532riot.c \
 				 $(CORE_DIR)/machine/z80fmly.c \
 				 $(CORE_DIR)/machine/6821pia.c \
@@ -50,9 +49,7 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/machine/74148.c \
 				 $(CORE_DIR)/vidhrdw/generic.c \
 				 $(CORE_DIR)/vidhrdw/vector.c \
-				 $(CORE_DIR)/machine/mathbox.c \
 				 $(CORE_DIR)/vidhrdw/poly.c \
-				 $(CORE_DIR)/vidhrdw/tlc34076.c \
 				 $(CORE_DIR)/machine/ticket.c \
 				 $(CORE_DIR)/machine/eeprom.c \
 				 $(CORE_DIR)/machine/6522via.c \
