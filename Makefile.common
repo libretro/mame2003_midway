@@ -121,20 +121,17 @@ SOUNDS+=YM2610@
 SOUNDS+=YM2413@
 SOUNDS+=POKEY@
 SOUNDS+=TIA@
-SOUNDS+=ASTROCADE@
 SOUNDS+=TMS5220@
 SOUNDS+=OKIM6295@
 SOUNDS+=HC55516@
 SOUNDS+=CEM3394@
 
 SOURCES_C +=  \
-				 $(CORE_DIR)/machine/astrocde_machine.c $(CORE_DIR)/vidhrdw/astrocde_vidhrdw.c $(CORE_DIR)/drivers/astrocde.c $(CORE_DIR)/sndhrdw/astrocde_sndhrdw.c \
 				 $(CORE_DIR)/sndhrdw/gorf.c \
 				 $(CORE_DIR)/machine/mcr.c $(CORE_DIR)/sndhrdw/mcr_sndhrdw.c \
 				 $(CORE_DIR)/vidhrdw/mcr12_vidhrdw.c $(CORE_DIR)/vidhrdw/mcr3_vidhrdw.c \
 				 $(CORE_DIR)/drivers/mcr1.c $(CORE_DIR)/drivers/mcr2.c $(CORE_DIR)/drivers/mcr3.c \
 				 $(CORE_DIR)/vidhrdw/mcr68_vidhrdw.c $(CORE_DIR)/drivers/mcr68.c \
-				 $(CORE_DIR)/vidhrdw/balsente_vidhrdw.c $(CORE_DIR)/machine/balsente_machine.c $(CORE_DIR)/drivers/balsente.c \
 				 $(CORE_DIR)/vidhrdw/gridlee_vidhrdw.c $(CORE_DIR)/sndhrdw/gridlee_sndhrdw.c $(CORE_DIR)/drivers/gridlee.c \
 				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c \
 				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
@@ -145,7 +142,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/williams_machine.c $(CORE_DIR)/vidhrdw/williams_vidhrdw.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c $(CORE_DIR)/drivers/williams.c \
 				 $(CORE_DIR)/machine/atari_vg.c \
 				 $(CORE_DIR)/vidhrdw/tia.c $(CORE_DIR)/drivers/tourtabl.c \
-				 $(CORE_DIR)/machine/asteroid_machine.c $(CORE_DIR)/sndhrdw/asteroid_sndhrdw.c $(CORE_DIR)/drivers/asteroid.c \
 				 $(CORE_DIR)/sndhrdw/llander.c \
 				 $(CORE_DIR)/drivers/bwidow.c \
 				 $(CORE_DIR)/sndhrdw/bzone_sndhrdw.c	$(CORE_DIR)/drivers/bzone.c \
@@ -171,11 +167,9 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/wolfpack_vidhrdw.c $(CORE_DIR)/drivers/wolfpack.c \
 				 $(CORE_DIR)/vidhrdw/boxer_vidhrdw.c $(CORE_DIR)/drivers/boxer.c \
 				 $(CORE_DIR)/vidhrdw/skyraid_vidhrdw.c $(CORE_DIR)/drivers/skyraid.c \
-				 $(CORE_DIR)/machine/avalnche_machine.c $(CORE_DIR)/vidhrdw/avalnche_vidhrdw.c $(CORE_DIR)/drivers/avalnche.c \
 				 $(CORE_DIR)/drivers/firetrk.c $(CORE_DIR)/vidhrdw/firetrk_vidhrdw.c \
 				 $(CORE_DIR)/vidhrdw/skydiver_vidhrdw.c $(CORE_DIR)/drivers/skydiver.c \
 				 $(CORE_DIR)/machine/sbrkout_machine.c $(CORE_DIR)/vidhrdw/sbrkout_vidhrdw.c $(CORE_DIR)/drivers/sbrkout.c \
-				 $(CORE_DIR)/machine/atarifb_machine.c $(CORE_DIR)/vidhrdw/atarifb_vidhrdw.c $(CORE_DIR)/drivers/atarifb.c \
 				 $(CORE_DIR)/vidhrdw/orbit_vidhrdw.c $(CORE_DIR)/drivers/orbit.c \
 				 $(CORE_DIR)/vidhrdw/videopin_vidhrdw.c $(CORE_DIR)/drivers/videopin.c \
 				 $(CORE_DIR)/machine/subs_machine.c $(CORE_DIR)/vidhrdw/subs_vidhrdw.c $(CORE_DIR)/drivers/subs.c \
@@ -194,19 +188,15 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/atarimo_vidhrdw.c $(CORE_DIR)/vidhrdw/atarirle_vidhrdw.c \
 				 $(CORE_DIR)/machine/slapstic.c \
 				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
-				 $(CORE_DIR)/vidhrdw/atetris_vidhrdw.c $(CORE_DIR)/drivers/atetris.c \
 				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
 				 $(CORE_DIR)/vidhrdw/eprom_vidhrdw.c $(CORE_DIR)/drivers/eprom.c \
 				 $(CORE_DIR)/vidhrdw/skullxbo_vidhrdw.c $(CORE_DIR)/drivers/skullxbo.c \
-				 $(CORE_DIR)/vidhrdw/badlands_vidhrdw.c $(CORE_DIR)/drivers/badlands.c \
 				 $(CORE_DIR)/vidhrdw/cyberbal_vidhrdw.c $(CORE_DIR)/sndhrdw/cyberbal_sndhrdw.c $(CORE_DIR)/drivers/cyberbal.c \
 				 $(CORE_DIR)/vidhrdw/rampart_vidhrdw.c $(CORE_DIR)/drivers/rampart.c \
 				 $(CORE_DIR)/vidhrdw/shuuz_vidhrdw.c $(CORE_DIR)/drivers/shuuz.c \
 				 $(CORE_DIR)/vidhrdw/thunderj_vidhrdw.c $(CORE_DIR)/drivers/thunderj.c \
 				 $(CORE_DIR)/vidhrdw/relief_vidhrdw.c $(CORE_DIR)/drivers/relief.c \
 				 $(CORE_DIR)/vidhrdw/offtwall_vidhrdw.c $(CORE_DIR)/drivers/offtwall.c \
-				 $(CORE_DIR)/vidhrdw/arcadecl_vidhrdw.c $(CORE_DIR)/drivers/arcadecl.c \
-				 $(CORE_DIR)/vidhrdw/beathead_vidhrdw.c $(CORE_DIR)/drivers/beathead.c \
 				 $(CORE_DIR)/machine/asic65.c \
 				 $(CORE_DIR)/sndhrdw/cage_sndhrdw.c
 
