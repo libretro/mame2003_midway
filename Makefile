@@ -1,5 +1,5 @@
 CORE_DIR := src
-TARGET_NAME := mame2003
+TARGET_NAME := mame2003_midway
 
 ifeq ($(platform),)
 platform = unix
