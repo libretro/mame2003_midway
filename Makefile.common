@@ -103,7 +103,6 @@ SOUNDS+=YM2413@
 SOUNDS+=TIA@
 SOUNDS+=TMS5220@
 SOUNDS+=OKIM6295@
-SOUNDS+=CEM3394@
 
 SOURCES_C +=  \
 				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c \
