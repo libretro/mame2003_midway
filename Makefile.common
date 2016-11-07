@@ -196,7 +196,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
 				 $(CORE_DIR)/vidhrdw/atetris_vidhrdw.c $(CORE_DIR)/drivers/atetris.c \
 				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
-				 $(CORE_DIR)/vidhrdw/xybots_vidhrdw.c $(CORE_DIR)/drivers/xybots.c \
 				 $(CORE_DIR)/vidhrdw/eprom_vidhrdw.c $(CORE_DIR)/drivers/eprom.c \
 				 $(CORE_DIR)/vidhrdw/skullxbo_vidhrdw.c $(CORE_DIR)/drivers/skullxbo.c \
 				 $(CORE_DIR)/vidhrdw/badlands_vidhrdw.c $(CORE_DIR)/drivers/badlands.c \
