@@ -177,11 +177,9 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/atarigen.c $(CORE_DIR)/sndhrdw/atarijsa.c \
 				 $(CORE_DIR)/vidhrdw/atarimo_vidhrdw.c $(CORE_DIR)/vidhrdw/atarirle_vidhrdw.c \
 				 $(CORE_DIR)/machine/slapstic.c \
-				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
 				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
 				 $(CORE_DIR)/vidhrdw/eprom_vidhrdw.c $(CORE_DIR)/drivers/eprom.c \
 				 $(CORE_DIR)/vidhrdw/skullxbo_vidhrdw.c $(CORE_DIR)/drivers/skullxbo.c \
-				 $(CORE_DIR)/vidhrdw/cyberbal_vidhrdw.c $(CORE_DIR)/sndhrdw/cyberbal_sndhrdw.c $(CORE_DIR)/drivers/cyberbal.c \
 				 $(CORE_DIR)/vidhrdw/rampart_vidhrdw.c $(CORE_DIR)/drivers/rampart.c \
 				 $(CORE_DIR)/vidhrdw/shuuz_vidhrdw.c $(CORE_DIR)/drivers/shuuz.c \
 				 $(CORE_DIR)/vidhrdw/thunderj_vidhrdw.c $(CORE_DIR)/drivers/thunderj.c \
