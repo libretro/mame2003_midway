@@ -141,7 +141,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/mcr68_vidhrdw.c $(CORE_DIR)/drivers/mcr68.c \
 				 $(CORE_DIR)/vidhrdw/balsente_vidhrdw.c $(CORE_DIR)/machine/balsente_machine.c $(CORE_DIR)/drivers/balsente.c \
 				 $(CORE_DIR)/vidhrdw/gridlee_vidhrdw.c $(CORE_DIR)/sndhrdw/gridlee_sndhrdw.c $(CORE_DIR)/drivers/gridlee.c \
-				 $(CORE_DIR)/drivers/seattle.c $(CORE_DIR)/vidhrdw/voodoo_vidhrdw.c \
 				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c \
 				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
 				 $(CORE_DIR)/drivers/midxunit.c \
@@ -210,17 +209,13 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/cyberbal_vidhrdw.c $(CORE_DIR)/sndhrdw/cyberbal_sndhrdw.c $(CORE_DIR)/drivers/cyberbal.c \
 				 $(CORE_DIR)/vidhrdw/rampart_vidhrdw.c $(CORE_DIR)/drivers/rampart.c \
 				 $(CORE_DIR)/vidhrdw/shuuz_vidhrdw.c $(CORE_DIR)/drivers/shuuz.c \
-				 $(CORE_DIR)/vidhrdw/atarig1_vidhrdw.c $(CORE_DIR)/drivers/atarig1.c \
 				 $(CORE_DIR)/vidhrdw/thunderj_vidhrdw.c $(CORE_DIR)/drivers/thunderj.c \
 				 $(CORE_DIR)/vidhrdw/batman_vidhrdw.c $(CORE_DIR)/drivers/batman.c \
 				 $(CORE_DIR)/vidhrdw/relief_vidhrdw.c $(CORE_DIR)/drivers/relief.c \
 				 $(CORE_DIR)/vidhrdw/offtwall_vidhrdw.c $(CORE_DIR)/drivers/offtwall.c \
 				 $(CORE_DIR)/vidhrdw/arcadecl_vidhrdw.c $(CORE_DIR)/drivers/arcadecl.c \
 				 $(CORE_DIR)/vidhrdw/beathead_vidhrdw.c $(CORE_DIR)/drivers/beathead.c \
-				 $(CORE_DIR)/vidhrdw/atarig42_vidhrdw.c $(CORE_DIR)/drivers/atarig42.c \
 				 $(CORE_DIR)/machine/asic65.c \
-				 $(CORE_DIR)/vidhrdw/atarigx2_vidhrdw.c $(CORE_DIR)/drivers/atarigx2.c \
-				 $(CORE_DIR)/vidhrdw/atarigt_vidhrdw.c $(CORE_DIR)/drivers/atarigt.c \
 				 $(CORE_DIR)/vidhrdw/jaguar_vidhrdw.c $(CORE_DIR)/sndhrdw/jaguar_sndhrdw.c $(CORE_DIR)/drivers/cojag.c \
 				 $(CORE_DIR)/sndhrdw/cage_sndhrdw.c
 
