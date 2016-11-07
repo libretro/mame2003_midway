@@ -70,7 +70,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 # those are added in the target.mak files)
 
 # uncomment the following lines to include a CPU core
-CPUS+=M6502@
 #CPUS+=M65SC02@
 #CPUS+=M65CE02@
 #CPUS+=M6509@
