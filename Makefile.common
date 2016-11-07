@@ -200,7 +200,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/slapstic.c \
 				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
 				 $(CORE_DIR)/vidhrdw/atetris_vidhrdw.c $(CORE_DIR)/drivers/atetris.c \
-				 $(CORE_DIR)/vidhrdw/klax_vidhrdw.c $(CORE_DIR)/drivers/klax.c \
 				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
 				 $(CORE_DIR)/vidhrdw/xybots_vidhrdw.c $(CORE_DIR)/drivers/xybots.c \
 				 $(CORE_DIR)/vidhrdw/eprom_vidhrdw.c $(CORE_DIR)/drivers/eprom.c \
@@ -210,7 +209,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/rampart_vidhrdw.c $(CORE_DIR)/drivers/rampart.c \
 				 $(CORE_DIR)/vidhrdw/shuuz_vidhrdw.c $(CORE_DIR)/drivers/shuuz.c \
 				 $(CORE_DIR)/vidhrdw/thunderj_vidhrdw.c $(CORE_DIR)/drivers/thunderj.c \
-				 $(CORE_DIR)/vidhrdw/batman_vidhrdw.c $(CORE_DIR)/drivers/batman.c \
 				 $(CORE_DIR)/vidhrdw/relief_vidhrdw.c $(CORE_DIR)/drivers/relief.c \
 				 $(CORE_DIR)/vidhrdw/offtwall_vidhrdw.c $(CORE_DIR)/drivers/offtwall.c \
 				 $(CORE_DIR)/vidhrdw/arcadecl_vidhrdw.c $(CORE_DIR)/drivers/arcadecl.c \

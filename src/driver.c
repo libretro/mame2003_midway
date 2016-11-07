@@ -246,8 +246,6 @@ const struct GameDriver *test_drivers[] =
 	DRIVER( beathead )	/* (proto)			(c) 1993 */
 	DRIVER( tmek )		/* 136100			(c) 1994 */
 	DRIVER( tmekprot )	/* 136100			(c) 1994 */
-	DRIVER( primrage )	/* 136102			(c) 1994 */
-	DRIVER( primraga )	/* 136102			(c) 1994 */
 	DRIVER( area51 )	/* 136105			(c) 1995 */
 	DRIVER( area51mx )	/* 136105			(c) 1998 */
 	DRIVER( a51mxr3k )	/*     ??           (c) 1998 */
@@ -308,26 +306,6 @@ const struct GameDriver *test_drivers[] =
 	DRIVER( nbamaxht )	/* (c) 1996 Midway */
 	DRIVER( rmpgwt )	/* (c) 1997 Midway */
 	DRIVER( rmpgwt11 )	/* (c) 1997 Midway */
-	DRIVER( crusnusa )	/* (c) 1994 Midway */
-	DRIVER( crusnu40 )	/* (c) 1994 Midway */
-	DRIVER( crusnu21 )	/* (c) 1994 Midway */
-	DRIVER( crusnwld )	/* (c) 1996 Midway */
-	DRIVER( crusnw20 )	/* (c) 1996 Midway */
-	DRIVER( crusnw13 )	/* (c) 1996 Midway */
-	DRIVER( offroadc )	/* (c) 1997 Midway */
-	DRIVER( wargods )	/* (c) 1996 Midway */
-
-	/* Midway / Atari  Voodoo based Hardware (Seattle, Flagstaff) */
-	DRIVER ( wg3dh )	/* (c) 1996 Atari Games */
-	DRIVER ( mace )		/* (c) 1996 Atari Games */
-	DRIVER ( sfrush )	/* (c) 1996 Atari Games */
-	DRIVER ( calspeed )	/* (c) 1996 Atari Games */
-	DRIVER ( carnevil )	/* (c) 1998 Midway Games */
-	DRIVER ( biofreak )	/* (c) 1997 Midway Games */
-	DRIVER ( blitz )	/* (c) 1997 Midway Games */
-	DRIVER ( blitz99 )	/* (c) 1998 Midway Games */
-	DRIVER ( blitz2k )	/* (c) 1999 Midway Games */
-
 
 #endif	/* DRIVER_RECURSIVE */
 
