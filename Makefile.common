@@ -171,7 +171,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/skydiver_vidhrdw.c $(CORE_DIR)/drivers/skydiver.c \
 				 $(CORE_DIR)/machine/sbrkout_machine.c $(CORE_DIR)/vidhrdw/sbrkout_vidhrdw.c $(CORE_DIR)/drivers/sbrkout.c \
 				 $(CORE_DIR)/vidhrdw/orbit_vidhrdw.c $(CORE_DIR)/drivers/orbit.c \
-				 $(CORE_DIR)/vidhrdw/videopin_vidhrdw.c $(CORE_DIR)/drivers/videopin.c \
 				 $(CORE_DIR)/machine/subs_machine.c $(CORE_DIR)/vidhrdw/subs_vidhrdw.c $(CORE_DIR)/drivers/subs.c \
 				 $(CORE_DIR)/vidhrdw/bsktball_vidhrdw.c $(CORE_DIR)/machine/bsktball_machine.c $(CORE_DIR)/drivers/bsktball.c \
 				 $(CORE_DIR)/vidhrdw/centiped_vidhrdw.c $(CORE_DIR)/drivers/centiped.c \
