@@ -1421,14 +1421,6 @@ else
 SOUNDDEFS += -DHAS_NES=0
 endif
 
-SOUND=$(strip $(findstring ASTROCADE@,$(SOUNDS)))
-ifneq ($(SOUND),)
-SOUNDDEFS += -DHAS_ASTROCADE=1
-SOURCES_C += $(CORE_DIR)/sound/astrocde_snd.c
-else
-SOUNDDEFS += -DHAS_ASTROCADE=0
-endif
-
 SOUND=$(strip $(findstring NAMCO@,$(SOUNDS)))
 ifneq ($(SOUND),)
 SOUNDDEFS += -DHAS_NAMCO=1
