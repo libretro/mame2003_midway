@@ -139,7 +139,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/midvunit_vidhrdw.c $(CORE_DIR)/drivers/midvunit.c \
 				 $(CORE_DIR)/machine/midtunit_machine.c $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c $(CORE_DIR)/drivers/midtunit.c \
 				 $(CORE_DIR)/machine/williams_machine.c $(CORE_DIR)/vidhrdw/williams_vidhrdw.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c $(CORE_DIR)/drivers/williams.c \
-				 $(CORE_DIR)/machine/atari_vg.c \
 				 $(CORE_DIR)/vidhrdw/tia.c $(CORE_DIR)/drivers/tourtabl.c \
 				 $(CORE_DIR)/sndhrdw/llander.c \
 				 $(CORE_DIR)/vidhrdw/copsnrob_vidhrdw.c $(CORE_DIR)/machine/copsnrob_machine.c $(CORE_DIR)/drivers/copsnrob.c \
@@ -165,26 +164,12 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/orbit_vidhrdw.c $(CORE_DIR)/drivers/orbit.c \
 				 $(CORE_DIR)/machine/subs_machine.c $(CORE_DIR)/vidhrdw/subs_vidhrdw.c $(CORE_DIR)/drivers/subs.c \
 				 $(CORE_DIR)/vidhrdw/bsktball_vidhrdw.c $(CORE_DIR)/machine/bsktball_machine.c $(CORE_DIR)/drivers/bsktball.c \
-				 $(CORE_DIR)/vidhrdw/centiped_vidhrdw.c $(CORE_DIR)/drivers/centiped.c \
-				 $(CORE_DIR)/vidhrdw/runaway_vidhrdw.c $(CORE_DIR)/drivers/runaway.c \
 				 $(CORE_DIR)/machine/missile_machine.c $(CORE_DIR)/vidhrdw/missile_vidhrdw.c $(CORE_DIR)/drivers/missile.c \
-				 $(CORE_DIR)/vidhrdw/foodf_vidhrdw.c $(CORE_DIR)/drivers/foodf.c \
 				 $(CORE_DIR)/drivers/tunhunt.c $(CORE_DIR)/vidhrdw/tunhunt_vidhrdw.c \
-				 $(CORE_DIR)/vidhrdw/liberatr_vidhrdw.c $(CORE_DIR)/drivers/liberatr.c \
 				 $(CORE_DIR)/vidhrdw/ccastles_vidhrdw.c $(CORE_DIR)/drivers/ccastles.c \
 				 $(CORE_DIR)/vidhrdw/cloak_vidhrdw.c $(CORE_DIR)/drivers/cloak.c \
 				 $(CORE_DIR)/vidhrdw/cloud9_vidhrdw.c $(CORE_DIR)/drivers/cloud9.c \
-				 $(CORE_DIR)/machine/atarigen.c $(CORE_DIR)/sndhrdw/atarijsa.c \
-				 $(CORE_DIR)/vidhrdw/atarimo_vidhrdw.c $(CORE_DIR)/vidhrdw/atarirle_vidhrdw.c \
 				 $(CORE_DIR)/machine/slapstic.c \
-				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
-				 $(CORE_DIR)/vidhrdw/eprom_vidhrdw.c $(CORE_DIR)/drivers/eprom.c \
-				 $(CORE_DIR)/vidhrdw/skullxbo_vidhrdw.c $(CORE_DIR)/drivers/skullxbo.c \
-				 $(CORE_DIR)/vidhrdw/rampart_vidhrdw.c $(CORE_DIR)/drivers/rampart.c \
-				 $(CORE_DIR)/vidhrdw/shuuz_vidhrdw.c $(CORE_DIR)/drivers/shuuz.c \
-				 $(CORE_DIR)/vidhrdw/thunderj_vidhrdw.c $(CORE_DIR)/drivers/thunderj.c \
-				 $(CORE_DIR)/vidhrdw/relief_vidhrdw.c $(CORE_DIR)/drivers/relief.c \
-				 $(CORE_DIR)/vidhrdw/offtwall_vidhrdw.c $(CORE_DIR)/drivers/offtwall.c \
 				 $(CORE_DIR)/machine/asic65.c \
 				 $(CORE_DIR)/sndhrdw/cage_sndhrdw.c
 
