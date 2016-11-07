@@ -95,11 +95,9 @@ CPUS+=M6802@
 CPUS+=M6808@
 CPUS+=M6809@
 CPUS+=M68000@
-CPUS+=M68010@
 CPUS+=M68EC020@
 CPUS+=M68020@
 CPUS+=T11@
-CPUS+=S2650@
 CPUS+=TMS34010@
 CPUS+=TMS34020@
 CPUS+=TMS32010@
@@ -201,13 +199,8 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/atarigen.c $(CORE_DIR)/sndhrdw/atarijsa.c \
 				 $(CORE_DIR)/vidhrdw/atarimo_vidhrdw.c $(CORE_DIR)/vidhrdw/atarirle_vidhrdw.c \
 				 $(CORE_DIR)/machine/slapstic.c \
-				 $(CORE_DIR)/vidhrdw/atarisy1_vidhrdw.c $(CORE_DIR)/drivers/atarisy1.c \
-				 $(CORE_DIR)/vidhrdw/atarisy2_vidhrdw.c $(CORE_DIR)/drivers/atarisy2.c \
 				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
-				 $(CORE_DIR)/vidhrdw/gauntlet_vidhrdw.c $(CORE_DIR)/drivers/gauntlet.c \
 				 $(CORE_DIR)/vidhrdw/atetris_vidhrdw.c $(CORE_DIR)/drivers/atetris.c \
-				 $(CORE_DIR)/vidhrdw/toobin_vidhrdw.c $(CORE_DIR)/drivers/toobin.c \
-				 $(CORE_DIR)/vidhrdw/vindictr_vidhrdw.c $(CORE_DIR)/drivers/vindictr.c \
 				 $(CORE_DIR)/vidhrdw/klax_vidhrdw.c $(CORE_DIR)/drivers/klax.c \
 				 $(CORE_DIR)/vidhrdw/blstroid_vidhrdw.c $(CORE_DIR)/drivers/blstroid.c \
 				 $(CORE_DIR)/vidhrdw/xybots_vidhrdw.c $(CORE_DIR)/drivers/xybots.c \
@@ -770,21 +763,6 @@ HAS_M68KCOMMON=1
 endif
 else
 CPUDEFS += -DHAS_M68000=0
-endif
-
-CPU=$(strip $(findstring M68010@,$(CPUS)))
-ifneq ($(CPU),)
-OBJDIRS += $(CORE_DIR)/cpu/m68000
-CPUDEFS += -DHAS_M68010=1
-ifdef X86_ASM_68000
-SOURCES_C += $(CORE_DIR)/cpu/m68000/asmintf.c $(CORE_DIR)/cpu/m68000/68000.c
-ASMDEFS += -DA68K0
-$(CORE_DIR)/cpu/m68000/68kem.c: $(CORE_DIR)/cpu/m68000/68kem.asm make68k.c
-else
-HAS_M68KCOMMON=1
-endif
-else
-CPUDEFS += -DHAS_M68010=0
 endif
 
 CPU=$(strip $(findstring M68EC020@,$(CPUS)))

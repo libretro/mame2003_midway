@@ -94,9 +94,6 @@
 #if (HAS_T11)
 #include "cpu/t11/t11.h"
 #endif
-#if (HAS_S2650)
-#include "cpu/s2650/s2650.h"
-#endif
 #if (HAS_TMS34010 || HAS_TMS34020)
 #include "cpu/tms34010/tms34010.h"
 #endif
@@ -521,9 +518,6 @@ const struct cpu_interface cpuintrf[] =
 #endif
 #if (HAS_T11)
 	CPU0(T11,	   t11, 	 4,  0,1.00,16,16lew,  0,16,LE,2, 6	),
-#endif
-#if (HAS_S2650)
-	CPU0(S2650,    s2650,	 2,  0,1.00, 8, 16,	  0,15,LE,1, 3	),
 #endif
 #if (HAS_TMS34010)
 	CPU0(TMS34010, tms34010, 2,  0,1.00,16,29lew,  3,29,LE,2,10	),

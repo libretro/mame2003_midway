@@ -178,22 +178,6 @@ const struct GameDriver *test_drivers[] =
 	DRIVER( blstroi2 )	/* 136057			(c) 1987 */
 	DRIVER( blstroig )	/* 136057			(c) 1987 */
 	DRIVER( blsthead )	/* (proto)			(c) 1987 */
-	/* Vindicators */
-	DRIVER( vindictr )	/* 136059			(c) 1988 */
-	DRIVER( vindicte )	/* 136059			(c) 1988 */
-	DRIVER( vindictg )	/* 136059			(c) 1988 */
-	DRIVER( vindice4 )	/* 136059			(c) 1988 */
-	DRIVER( vindict4 )	/* 136059			(c) 1988 */
-	DRIVER( vindice3 )	/* 136059			(c) 1988 */
-	DRIVER( vindict2 )	/* 136059			(c) 1988 */
-	DRIVER( vindict1 )	/* 136059			(c) 1988 */
-	/* Toobin */
-	DRIVER( toobin )	/* 136061			(c) 1988 */
-	DRIVER( toobine )	/* 136061			(c) 1988 */
-	DRIVER( toobing )	/* 136061			(c) 1988 */
-	DRIVER( toobin2 )	/* 136061			(c) 1988 */
-	DRIVER( toobin2e )	/* 136061			(c) 1988 */
-	DRIVER( toobin1 )	/* 136061			(c) 1988 */
 	/* Cyberball */
 	DRIVER( cyberbal )	/* 136064			(c) 1989 */
 	DRIVER( cyberba2 )	/* 136064			(c) 1989 */
