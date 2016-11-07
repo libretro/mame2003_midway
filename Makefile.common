@@ -82,8 +82,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 CPUS+=M6809@
 CPUS+=TMS34010@
 CPUS+=TMS34020@
-CPUS+=TMS32010@
-CPUS+=TMS32031@
 CPUS+=ADSP2100@
 CPUS+=ADSP2101@
 CPUS+=ADSP2104@
@@ -108,7 +106,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
 				 $(CORE_DIR)/drivers/midxunit.c \
 				 $(CORE_DIR)/machine/midwunit_machine.c $(CORE_DIR)/drivers/midwunit.c \
-				 $(CORE_DIR)/vidhrdw/midvunit_vidhrdw.c $(CORE_DIR)/drivers/midvunit.c \
 				 $(CORE_DIR)/machine/midtunit_machine.c $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c $(CORE_DIR)/drivers/midtunit.c \
 				 $(CORE_DIR)/machine/asic65.c
 
