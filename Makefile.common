@@ -204,7 +204,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/atarisy1_vidhrdw.c $(CORE_DIR)/drivers/atarisy1.c \
 				 $(CORE_DIR)/vidhrdw/atarisy2_vidhrdw.c $(CORE_DIR)/drivers/atarisy2.c \
 				 $(CORE_DIR)/machine/irobot_machine.c $(CORE_DIR)/vidhrdw/irobot_vidhrdw.c $(CORE_DIR)/drivers/irobot.c \
-				 $(CORE_DIR)/machine/harddriv_machine.c $(CORE_DIR)/vidhrdw/harddriv_vidhrdw.c $(CORE_DIR)/sndhrdw/harddriv_sndhrdw.c $(CORE_DIR)/drivers/harddriv.c \
 				 $(CORE_DIR)/vidhrdw/gauntlet_vidhrdw.c $(CORE_DIR)/drivers/gauntlet.c \
 				 $(CORE_DIR)/vidhrdw/atetris_vidhrdw.c $(CORE_DIR)/drivers/atetris.c \
 				 $(CORE_DIR)/vidhrdw/toobin_vidhrdw.c $(CORE_DIR)/drivers/toobin.c \
