@@ -74,7 +74,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 # those are added in the target.mak files)
 
 # uncomment the following lines to include a CPU core
-CPUS+=Z80@
 CPUS+=M6502@
 #CPUS+=M65SC02@
 #CPUS+=M65CE02@
@@ -122,10 +121,6 @@ SOUNDS+=HC55516@
 SOUNDS+=CEM3394@
 
 SOURCES_C +=  \
-				 $(CORE_DIR)/machine/mcr.c $(CORE_DIR)/sndhrdw/mcr_sndhrdw.c \
-				 $(CORE_DIR)/vidhrdw/mcr12_vidhrdw.c $(CORE_DIR)/vidhrdw/mcr3_vidhrdw.c \
-				 $(CORE_DIR)/drivers/mcr1.c $(CORE_DIR)/drivers/mcr2.c $(CORE_DIR)/drivers/mcr3.c \
-				 $(CORE_DIR)/vidhrdw/mcr68_vidhrdw.c $(CORE_DIR)/drivers/mcr68.c \
 				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c \
 				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
 				 $(CORE_DIR)/drivers/midxunit.c \
@@ -133,26 +128,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/midvunit_vidhrdw.c $(CORE_DIR)/drivers/midvunit.c \
 				 $(CORE_DIR)/machine/midtunit_machine.c $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c $(CORE_DIR)/drivers/midtunit.c \
 				 $(CORE_DIR)/machine/williams_machine.c $(CORE_DIR)/vidhrdw/williams_vidhrdw.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c $(CORE_DIR)/drivers/williams.c \
-				 $(CORE_DIR)/vidhrdw/tia.c $(CORE_DIR)/drivers/tourtabl.c \
-				 $(CORE_DIR)/vidhrdw/copsnrob_vidhrdw.c $(CORE_DIR)/machine/copsnrob_machine.c $(CORE_DIR)/drivers/copsnrob.c \
-				 $(CORE_DIR)/vidhrdw/flyball_vidhrdw.c $(CORE_DIR)/drivers/flyball.c \
-				 $(CORE_DIR)/vidhrdw/sprint2_vidhrdw.c $(CORE_DIR)/drivers/sprint2.c \
-				 $(CORE_DIR)/vidhrdw/sprint4_vidhrdw.c $(CORE_DIR)/drivers/sprint4.c \
-				 $(CORE_DIR)/vidhrdw/sprint8_vidhrdw.c $(CORE_DIR)/drivers/sprint8.c \
-				 $(CORE_DIR)/vidhrdw/nitedrvr_vidhrdw.c $(CORE_DIR)/machine/nitedrvr_machine.c $(CORE_DIR)/drivers/nitedrvr.c \
-				 $(CORE_DIR)/vidhrdw/triplhnt_vidhrdw.c $(CORE_DIR)/drivers/triplhnt.c \
-				 $(CORE_DIR)/vidhrdw/dragrace_vidhrdw.c $(CORE_DIR)/drivers/dragrace.c \
-				 $(CORE_DIR)/vidhrdw/poolshrk_vidhrdw.c $(CORE_DIR)/drivers/poolshrk.c \
-				 $(CORE_DIR)/vidhrdw/starshp1_vidhrdw.c $(CORE_DIR)/drivers/starshp1.c \
-				 $(CORE_DIR)/vidhrdw/canyon_vidhrdw.c $(CORE_DIR)/drivers/canyon.c \
-				 $(CORE_DIR)/vidhrdw/destroyr_vidhrdw.c $(CORE_DIR)/drivers/destroyr.c \
-				 $(CORE_DIR)/vidhrdw/wolfpack_vidhrdw.c $(CORE_DIR)/drivers/wolfpack.c \
-				 $(CORE_DIR)/vidhrdw/skyraid_vidhrdw.c $(CORE_DIR)/drivers/skyraid.c \
-				 $(CORE_DIR)/drivers/firetrk.c $(CORE_DIR)/vidhrdw/firetrk_vidhrdw.c \
-				 $(CORE_DIR)/vidhrdw/skydiver_vidhrdw.c $(CORE_DIR)/drivers/skydiver.c \
-				 $(CORE_DIR)/machine/sbrkout_machine.c $(CORE_DIR)/vidhrdw/sbrkout_vidhrdw.c $(CORE_DIR)/drivers/sbrkout.c \
-				 $(CORE_DIR)/machine/subs_machine.c $(CORE_DIR)/vidhrdw/subs_vidhrdw.c $(CORE_DIR)/drivers/subs.c \
-				 $(CORE_DIR)/vidhrdw/bsktball_vidhrdw.c $(CORE_DIR)/machine/bsktball_machine.c $(CORE_DIR)/drivers/bsktball.c \
 				 $(CORE_DIR)/machine/asic65.c
 
 SOURCES_C += $(CORE_DIR)/driver.c $(CORE_DIR)/cheat.c
