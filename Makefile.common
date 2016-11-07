@@ -98,9 +98,10 @@ SOUNDS+=YM2151_ALT@
 SOUNDS+=YM2610@
 SOUNDS+=TMS5220@
 SOUNDS+=OKIM6295@
+SOUNDS+=HC55516@
 
 SOURCES_C +=  \
-				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c \
+				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c \
 				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
 				 $(CORE_DIR)/drivers/midxunit.c \
 				 $(CORE_DIR)/machine/midwunit_machine.c $(CORE_DIR)/drivers/midwunit.c \
