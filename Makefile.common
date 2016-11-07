@@ -50,7 +50,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/machine/74148.c \
 				 $(CORE_DIR)/vidhrdw/generic.c \
 				 $(CORE_DIR)/vidhrdw/vector.c \
-				 $(CORE_DIR)/vidhrdw/avgdvg_vidhrdw.c \
 				 $(CORE_DIR)/machine/mathbox.c \
 				 $(CORE_DIR)/vidhrdw/poly.c \
 				 $(CORE_DIR)/vidhrdw/matrix3d.c \
@@ -143,13 +142,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/machine/atari_vg.c \
 				 $(CORE_DIR)/vidhrdw/tia.c $(CORE_DIR)/drivers/tourtabl.c \
 				 $(CORE_DIR)/sndhrdw/llander.c \
-				 $(CORE_DIR)/drivers/bwidow.c \
-				 $(CORE_DIR)/sndhrdw/bzone_sndhrdw.c	$(CORE_DIR)/drivers/bzone.c \
-				 $(CORE_DIR)/sndhrdw/redbaron.c \
-				 $(CORE_DIR)/drivers/tempest.c \
-				 $(CORE_DIR)/machine/starwars_machine.c $(CORE_DIR)/drivers/starwars.c $(CORE_DIR)/sndhrdw/starwars_sndhrdw.c \
-				 $(CORE_DIR)/machine/mhavoc_machine.c $(CORE_DIR)/drivers/mhavoc.c \
-				 $(CORE_DIR)/drivers/quantum.c \
 				 $(CORE_DIR)/vidhrdw/copsnrob_vidhrdw.c $(CORE_DIR)/machine/copsnrob_machine.c $(CORE_DIR)/drivers/copsnrob.c \
 				 $(CORE_DIR)/vidhrdw/flyball_vidhrdw.c $(CORE_DIR)/drivers/flyball.c \
 				 $(CORE_DIR)/vidhrdw/sprint2_vidhrdw.c $(CORE_DIR)/drivers/sprint2.c \
@@ -182,7 +174,6 @@ SOURCES_C +=  \
 				 $(CORE_DIR)/vidhrdw/ccastles_vidhrdw.c $(CORE_DIR)/drivers/ccastles.c \
 				 $(CORE_DIR)/vidhrdw/cloak_vidhrdw.c $(CORE_DIR)/drivers/cloak.c \
 				 $(CORE_DIR)/vidhrdw/cloud9_vidhrdw.c $(CORE_DIR)/drivers/cloud9.c \
-				 $(CORE_DIR)/vidhrdw/jedi_vidhrdw.c $(CORE_DIR)/drivers/jedi.c \
 				 $(CORE_DIR)/machine/atarigen.c $(CORE_DIR)/sndhrdw/atarijsa.c \
 				 $(CORE_DIR)/vidhrdw/atarimo_vidhrdw.c $(CORE_DIR)/vidhrdw/atarirle_vidhrdw.c \
 				 $(CORE_DIR)/machine/slapstic.c \
