@@ -38,7 +38,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/sound/streams.c \
 				 $(CORE_DIR)/sound/mixer.c \
 				 $(CORE_DIR)/sound/filter.c \
-				 $(CORE_DIR)/sound/votrax.c \
 				 $(CORE_DIR)/machine/6532riot.c \
 				 $(CORE_DIR)/machine/6821pia.c \
 				 $(CORE_DIR)/machine/8255ppi.c \
@@ -101,7 +100,6 @@ SOUNDS+=AY8910@
 SOUNDS+=YM2151_ALT@
 SOUNDS+=YM2610@
 SOUNDS+=YM2413@
-SOUNDS+=POKEY@
 SOUNDS+=TIA@
 SOUNDS+=TMS5220@
 SOUNDS+=OKIM6295@
