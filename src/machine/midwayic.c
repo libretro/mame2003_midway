@@ -316,12 +316,6 @@ void midway_serial_pic2_w(UINT8 data)
 					memcpy(pic.buffer, serial.data, 16);
 					pic.total = 16;
 					pic.index = 0;
-#ifdef MAME_DEBUG
-{
-	extern int debug_key_pressed;
-	debug_key_pressed = 1;
-}
-#endif
 				}
 				break;
 

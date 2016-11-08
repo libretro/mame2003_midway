@@ -664,14 +664,6 @@ static void cpu_timeslice(void)
 	
 	/* update the global time */
 	timer_adjust_global_time(target);
-
-	/* huh? something for the debugger */
-	#ifdef MAME_DEBUG
-	{
-		extern int debug_key_delay;
-		debug_key_delay = 0x7ffe;
-	}
-	#endif
 }
 
 

@@ -3682,9 +3682,6 @@ int handle_user_interface(struct mame_bitmap *bitmap)
 	}
 	if (setup_selected != 0) setup_selected = setup_menu(bitmap, setup_selected);
 
-#ifdef MAME_DEBUG
-	if (!mame_debug)
-#endif
 		if (osd_selected == 0 && input_ui_pressed(IPT_UI_ON_SCREEN_DISPLAY))
 		{
 			osd_selected = -1;
@@ -3826,9 +3823,6 @@ void pause_action_paused(void)
     }
     if (setup_selected != 0) setup_selected = setup_menu(pause_bitmap, setup_selected);
 
-#ifdef MAME_DEBUG
-    if (!mame_debug)
-#endif
         if (osd_selected == 0 && input_ui_pressed(IPT_UI_ON_SCREEN_DISPLAY))
         {
             osd_selected = -1;

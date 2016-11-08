@@ -804,12 +804,6 @@ void palette_update_display(struct mame_display *display)
 		display->game_palette_dirty = NULL;
 	}
 
-	/* debugger always has a palette */
-#ifdef MAME_DEBUG
-	display->debug_palette = debugger_palette;
-	display->debug_palette_entries = DEBUGGER_TOTAL_COLORS;
-#endif
-
 	/* update the dirty state */
 	if (debug_palette_dirty)
 		display->changed_flags |= DEBUG_PALETTE_CHANGED;

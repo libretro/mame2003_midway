@@ -54,10 +54,6 @@
 #define FILEFLAG_MUST_EXIST		0x200
 #endif
 
-#ifdef MAME_DEBUG
-#define DEBUG_COOKIE			0xbaadf00d
-#endif
-
 /***************************************************************************
 	TYPE DEFINITIONS
 ***************************************************************************/

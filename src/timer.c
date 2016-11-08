@@ -145,22 +145,6 @@ INLINE void timer_list_insert(mame_timer *timer)
 	double expire = timer->enabled ? timer->expire : TIME_NEVER;
 	mame_timer *t, *lt = NULL;
 
-	/* sanity checks for the debug build */
-	#ifdef MAME_DEBUG
-	{
-		int tnum = 0;
-
-		/* loop over the timer list */
-		for (t = timer_head; t; t = t->next, tnum++)
-		{
-			if (t == timer)
-				printf("This timer is already inserted in the list!\n");
-			if (tnum == MAX_TIMERS-1)
-				printf("Timer list is full!\n");
-		}
-	}
-	#endif
-
 	/* loop over the timer list */
 	for (t = timer_head; t; lt = t, t = t->next)
 	{
@@ -201,19 +185,6 @@ INLINE void timer_list_insert(mame_timer *timer)
 
 INLINE void timer_list_remove(mame_timer *timer)
 {
-	/* sanity checks for the debug build */
-	#ifdef MAME_DEBUG
-	{
-		mame_timer *t;
-		int tnum = 0;
-
-		/* loop over the timer list */
-		for (t = timer_head; t && t != timer; t = t->next, tnum++) ;
-		if (t == NULL)
-			printf ("timer not found in list");
-	}
-	#endif
-
 	/* remove it from the list */
 	if (timer->prev)
 		timer->prev->next = timer->next;

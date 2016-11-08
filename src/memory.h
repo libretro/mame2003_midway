@@ -55,11 +55,7 @@ extern "C" {
 
 ***************************************************************************/
 
-#ifdef MAME_DEBUG
-#define CPUREADOP_SAFETY_NONE		0
-#define CPUREADOP_SAFETY_PARTIAL	0
-#define CPUREADOP_SAFETY_FULL		1
-#elif defined(MESS)
+#if defined(MESS)
 #define CPUREADOP_SAFETY_NONE		0
 #define CPUREADOP_SAFETY_PARTIAL	1
 #define CPUREADOP_SAFETY_FULL		0

@@ -1722,12 +1722,6 @@ int rom_load(const struct RomModule *romp)
 		else if (romdata.regionlength <= 0x400000)
 			memset(romdata.regionbase, 0, romdata.regionlength);
 
-#ifdef MAME_DEBUG
-		/* if we're debugging, fill region with random data to catch errors */
-		else
-			fill_random(romdata.regionbase, romdata.regionlength);
-#endif
-
 		/* now process the entries in the region */
 		if (ROMREGION_ISROMDATA(region))
 		{

@@ -304,13 +304,6 @@ void drc_append_verify_code(struct drccore *drc, void *code, UINT8 length)
 
 void drc_append_call_debugger(struct drccore *drc)
 {
-#ifdef MAME_DEBUG
-	struct linkdata link;
-	_cmp_m32abs_imm(&mame_debug, 0);								// cmp	[mame_debug],0
-	_jcc_short_link(COND_E, &link);									// je	skip
-	drc_append_save_call_restore(drc, (void *)MAME_Debug, 0);		// save volatiles
-	_resolve_link(&link);
-#endif
 }
 
 
