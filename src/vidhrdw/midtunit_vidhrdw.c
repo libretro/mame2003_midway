@@ -12,7 +12,6 @@
 
 /* compile-time options */
 #define FAST_DMA			0		/* DMAs complete immediately; reduces number of CPU switches */
-#define LOG_DMA				0		/* DMAs are logged if the 'L' key is pressed */
 
 
 /* constants for the  DMA chip */
@@ -753,24 +752,6 @@ WRITE16_HANDLER( midtunit_dma_w )
 	/* determine the offset */
 	gfxoffset = dma_register[DMA_OFFSETLO] | (dma_register[DMA_OFFSETHI] << 16);
 
-#if LOG_DMA
-	if (keyboard_pressed(KEYCODE_L))
-	{
-		logerror("DMA command %04X: (bpp=%d skip=%d xflip=%d yflip=%d preskip=%d postskip=%d)\n",
-				command, (command >> 12) & 7, (command >> 7) & 1, (command >> 4) & 1, (command >> 5) & 1, (command >> 8) & 3, (command >> 10) & 3);
-		logerror("  offset=%08X pos=(%d,%d) w=%d h=%d clip=(%d,%d)-(%d,%d)\n", gfxoffset, dma_register[DMA_XSTART], dma_register[DMA_YSTART],
-				dma_register[DMA_WIDTH], dma_register[DMA_HEIGHT], dma_register[DMA_LEFTCLIP], dma_register[DMA_TOPCLIP], dma_register[DMA_RIGHTCLIP], dma_register[DMA_BOTCLIP]);
-		logerror("  offset=%08X pos=(%d,%d) w=%d h=%d clip=(%d,%d)-(%d,%d)\n", gfxoffset, dma_state.xpos, dma_state.ypos,
-				dma_state.width, dma_state.height, dma_state.leftclip, dma_state.topclip, dma_state.rightclip, dma_state.botclip);
-		logerror("  palette=%04X color=%04X lskip=%02X rskip=%02X xstep=%04X ystep=%04X test=%04X config=%04X\n",
-				dma_register[DMA_PALETTE], dma_register[DMA_COLOR],
-				dma_register[DMA_LRSKIP] >> 8, dma_register[DMA_LRSKIP] & 0xff,
-				dma_register[DMA_SCALE_X], dma_register[DMA_SCALE_Y], dma_register[DMA_UNKNOWN_E],
-				dma_register[DMA_CONFIG]);
-		logerror("----\n");
-	}
-#endif
-
 	/* special case: drawing mode C doesn't need to know about any pixel data */
 	if ((command & 0x0f) == 0x0c)
 		gfxoffset = 0;
@@ -862,11 +843,6 @@ VIDEO_UPDATE( midtunit )
 {
 	int v, width, xoffs, dpytap;
 	UINT32 offset;
-
-#if LOG_DMA
-	if (keyboard_pressed(KEYCODE_L))
-		logerror("---\n");
-#endif
 
 	/* get the current scroll offset */
 	cpuintrf_push_context(0);
