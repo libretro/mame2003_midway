@@ -51,7 +51,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/harddisk.c \
 				 $(CORE_DIR)/md5.c \
 				 $(CORE_DIR)/machine/idectrl.c \
-				 $(CORE_DIR)/sound/wavwrite.c \
 				 $(CORE_DIR)/x86drc.c \
 
 # the core object files (without target specific objects;
