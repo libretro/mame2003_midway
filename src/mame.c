@@ -113,7 +113,6 @@
 #include "mamedbg.h"
 #include "artwork.h"
 #include "state.h"
-#include "vidhrdw/generic.h"
 #include "vidhrdw/vector.h"
 #include "palette.h"
 #include "harddisk.h"
@@ -224,7 +223,6 @@ static int init_game_options(void);
 static int decode_graphics(const struct GfxDecodeInfo *gfxdecodeinfo);
 static void compute_aspect_ratio(const struct InternalMachineDriver *drv, int *aspect_x, int *aspect_y);
 static void scale_vectorgames(int gfx_width, int gfx_height, int *width, int *height);
-static int init_buffered_spriteram(void);
 
 #ifdef MESS
 #include "mesintrf.h"
@@ -407,9 +405,6 @@ static int init_machine(void)
 
 	/* load input ports settings (keys, dip switches, and so on) */
 	settingsloaded = load_input_port_settings();
-
-	/* multi-session safety - set spriteram size to zero before memory map is set up */
-	spriteram_size = spriteram_2_size = 0;
 
 	/* initialize the memory system for this game */
 	if (!memory_init())
@@ -745,11 +740,6 @@ static int vh_open(void)
 			Machine->drv->default_visible_area.min_y,
 			Machine->drv->default_visible_area.max_y);
 
-	/* create spriteram buffers if necessary */
-	if (Machine->drv->video_attributes & VIDEO_BUFFERS_SPRITERAM)
-		if (init_buffered_spriteram())
-			goto cant_init_buffered_spriteram;
-
 	/* build our private user interface font */
 	/* This must be done AFTER osd_create_display() so the function knows the */
 	/* resolution we are running at and can pick a different font depending on it. */
@@ -780,9 +770,6 @@ static int vh_open(void)
 	/* initialize the palette - must be done after osd_create_display() */
 	if (palette_init())
 		goto cant_init_palette;
-
-	/* force the first update to be full */
-	set_vh_global_attribute(NULL, 0);
 
 	/* reset video statics and get out of here */
 	pdrawgfx_shadow_lowpri = 0;
@@ -1016,51 +1003,6 @@ static void scale_vectorgames(int gfx_width, int gfx_height, int *width, int *he
 	*width &= ~3;
 	*height &= ~3;
 }
-
-
-
-/*-------------------------------------------------
-	init_buffered_spriteram - initialize the
-	double-buffered spriteram
--------------------------------------------------*/
-
-static int init_buffered_spriteram(void)
-{
-	/* make sure we have a valid size */
-	if (spriteram_size == 0)
-	{
-		logerror("vh_open():  Video buffers spriteram but spriteram_size is 0\n");
-		return 0;
-	}
-
-	/* allocate memory for the back buffer */
-	buffered_spriteram = auto_malloc(spriteram_size);
-	if (!buffered_spriteram)
-		return 1;
-
-	/* register for saving it */
-	state_save_register_UINT8("generic_video", 0, "buffered_spriteram", buffered_spriteram, spriteram_size);
-
-	/* do the same for the secon back buffer, if present */
-	if (spriteram_2_size)
-	{
-		/* allocate memory */
-		buffered_spriteram_2 = auto_malloc(spriteram_2_size);
-		if (!buffered_spriteram_2)
-			return 1;
-
-		/* register for saving it */
-		state_save_register_UINT8("generic_video", 0, "buffered_spriteram_2", buffered_spriteram_2, spriteram_2_size);
-	}
-
-	/* make 16-bit and 32-bit pointer variants */
-	buffered_spriteram16 = (data16_t *)buffered_spriteram;
-	buffered_spriteram32 = (data32_t *)buffered_spriteram;
-	buffered_spriteram16_2 = (data16_t *)buffered_spriteram_2;
-	buffered_spriteram32_2 = (data32_t *)buffered_spriteram_2;
-	return 0;
-}
-
 
 
 /***************************************************************************
