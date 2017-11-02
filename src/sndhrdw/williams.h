@@ -1,6 +1,6 @@
 /***************************************************************************
 
-	Midway/Williams Audio Boards
+	Midway/Williams Audio Board
 
 ****************************************************************************/
 
@@ -19,4 +19,3 @@ void williams_adpcm_reset_w(int state);
 void williams_narc_init(int cpunum);
 void williams_narc_data_w(int data);
 void williams_narc_reset_w(int state);
-
