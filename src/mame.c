@@ -115,7 +115,6 @@
 #include "mamedbg.h"
 #include "artwork.h"
 #include "state.h"
-#include "vidhrdw/vector.h"
 #include "palette.h"
 #include "harddisk.h"
 
@@ -220,7 +219,6 @@ static void vh_close(void);
 static int init_game_options(void);
 static int decode_graphics(const struct GfxDecodeInfo *gfxdecodeinfo);
 static void compute_aspect_ratio(const struct InternalMachineDriver *drv, int *aspect_x, int *aspect_y);
-static void scale_vectorgames(int gfx_width, int gfx_height, int *width, int *height);
 
 #ifdef MESS
 #include "mesintrf.h"
@@ -678,10 +676,6 @@ static int vh_open(void)
 		if (decode_graphics(Machine->drv->gfxdecodeinfo))
 			goto cant_decode_graphics;
 
-	/* if we're a vector game, override the screen width and height */
-	if (Machine->drv->video_attributes & VIDEO_TYPE_VECTOR)
-		scale_vectorgames(options.vector_width, options.vector_height, &bmwidth, &bmheight);
-
 	/* compute the visible area for raster games */
 	if (!(Machine->drv->video_attributes & VIDEO_TYPE_VECTOR))
 	{
@@ -711,10 +705,6 @@ static int vh_open(void)
 	/* initialize the display through the artwork (and eventually the OSD) layer */
 	if (artwork_create_display(&params, direct_rgb_components, artcallbacks))
 		goto cant_create_display;
-
-	/* the create display process may update the vector width/height, so recompute */
-	if (Machine->drv->video_attributes & VIDEO_TYPE_VECTOR)
-		scale_vectorgames(options.vector_width, options.vector_height, &bmwidth, &bmheight);
 
 	/* now allocate the screen bitmap */
 	Machine->scrbitmap = auto_bitmap_alloc_depth(bmwidth, bmheight, Machine->color_depth);
@@ -851,10 +841,6 @@ static int init_game_options(void)
 		alpha_init();
 	}
 
-	/* update the vector width/height with defaults */
-	if (options.vector_width == 0) options.vector_width = 640;
-	if (options.vector_height == 0) options.vector_height = 480;
-
 	/* initialize the samplerate */
 	Machine->sample_rate = options.samplerate;
 
@@ -945,31 +931,6 @@ static int decode_graphics(const struct GfxDecodeInfo *gfxdecodeinfo)
 
 
 
-/*-------------------------------------------------
-	scale_vectorgames - scale the vector games
-	to a given resolution
--------------------------------------------------*/
-
-static void scale_vectorgames(int gfx_width, int gfx_height, int *width, int *height)
-{
-	double x_scale, y_scale, scale;
-
-	/* compute the scale values */
-	x_scale = (double)gfx_width / (double)(*width);
-	y_scale = (double)gfx_height / (double)(*height);
-
-	/* pick the smaller scale factor */
-	scale = (x_scale < y_scale) ? x_scale : y_scale;
-
-	/* compute the new size */
-	*width = (int)((double)*width * scale);
-	*height = (int)((double)*height * scale);
-
-	/* round to the nearest 4 pixel value */
-	*width &= ~3;
-	*height &= ~3;
-}
-
 
 /***************************************************************************
 
@@ -999,18 +960,8 @@ void set_visible_area(int min_x, int max_x, int min_y, int max_y)
 	Machine->visible_area.min_y = min_y;
 	Machine->visible_area.max_y = max_y;
 
-	/* vector games always use the whole bitmap */
-	if (Machine->drv->video_attributes & VIDEO_TYPE_VECTOR)
-	{
-		Machine->absolute_visible_area.min_x = 0;
-		Machine->absolute_visible_area.max_x = Machine->scrbitmap->width - 1;
-		Machine->absolute_visible_area.min_y = 0;
-		Machine->absolute_visible_area.max_y = Machine->scrbitmap->height - 1;
-	}
-
 	/* raster games need to use the visible area */
-	else
-		Machine->absolute_visible_area = Machine->visible_area;
+	Machine->absolute_visible_area = Machine->visible_area;
 
 	/* recompute scanline timing */
 	cpu_compute_scanline_timing();
@@ -1129,14 +1080,6 @@ void update_video_and_audio(void)
 	current_display.game_visible_area = Machine->absolute_visible_area;
 	if (visible_area_changed)
 		current_display.changed_flags |= GAME_VISIBLE_AREA_CHANGED;
-
-	/* set the vector dirty list */
-	if (Machine->drv->video_attributes & VIDEO_TYPE_VECTOR)
-		if (!full_refresh_pending && !ui_dirty && !skipped_it)
-		{
-			current_display.vector_dirty_pixels = vector_dirty_list;
-			current_display.changed_flags |= VECTOR_PIXELS_CHANGED;
-		}
 
 	/* set the LED status */
 	if (leds_status != current_display.led_state)

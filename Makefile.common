@@ -39,7 +39,6 @@ SOURCES_C += $(CORE_DIR)/mame.c \
 				 $(CORE_DIR)/sound/mixer.c \
 				 $(CORE_DIR)/sound/filter.c \
 				 $(CORE_DIR)/machine/6821pia.c \
-				 $(CORE_DIR)/vidhrdw/vector.c \
 				 $(CORE_DIR)/machine/ticket.c \
 				 $(CORE_DIR)/machine/eeprom.c \
 				 $(CORE_DIR)/mamedbg.c \

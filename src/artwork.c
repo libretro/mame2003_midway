@@ -303,7 +303,6 @@
 #include "driver.h"
 #include "png.h"
 #include "artwork.h"
-#include "vidhrdw/vector.h"
 #include <ctype.h>
 #include <math.h>
 
@@ -636,28 +635,6 @@ int artwork_create_display(struct osd_create_params *params, UINT32 *rgb_compone
 	params->aspect_x = (int)((double)params->aspect_x * 100. * (max_x - min_x));
 	params->aspect_y = (int)((double)params->aspect_y * 100. * (max_y - min_y));
 
-	/* vector games need to fit inside the original bounds, so scale back down */
-	if (params->video_attributes & VIDEO_TYPE_VECTOR)
-	{
-		/* shrink the width/height if over */
-		if (params->width > original_width)
-		{
-			params->width = original_width;
-			params->height = original_width * params->aspect_y / params->aspect_x;
-		}
-		if (params->height > original_height)
-		{
-			params->height = original_height;
-			params->width = original_height * params->aspect_x / params->aspect_y;
-		}
-
-		/* compute the new raw width/height and update the vector info */
-		original_width = (int)((double)params->width / (max_x - min_x));
-		original_height = (int)((double)params->height / (max_y - min_y));
-		options.vector_width = original_width;
-		options.vector_height = original_height;
-	}
-
 	/* adjust the parameters */
 	original_attributes = params->video_attributes;
 	params->video_attributes |= VIDEO_RGB_DIRECT | VIDEO_NEEDS_6BITS_PER_GUN;
@@ -809,13 +786,6 @@ void artwork_update_video_and_audio(struct mame_display *display)
 		/* add UI */
 		if (ui_visible)
 			render_ui_overlay(uioverlay, uioverlayhint, palette_lookup, display);
-
-		/* if artwork changed, or there's UI, we can't use dirty pixels */
-		if (artwork_changed || ui_changed || ui_visible)
-		{
-			display->changed_flags &= ~VECTOR_PIXELS_CHANGED;
-			display->vector_dirty_pixels = NULL;
-		}
 	}
 	profiler_mark(PROFILER_END);
 
@@ -1352,41 +1322,8 @@ static void render_game_bitmap(struct mame_bitmap *bitmap, const rgb_t *palette,
 	srcbase = (UINT8 *)bitmap->base + Machine->absolute_visible_area.min_y * bitmap->rowbytes;
 	dstbase = (UINT8 *)final->base + gamerect.min_y * final->rowbytes + gamerect.min_x * sizeof(UINT32);
 
-	/* vector case */
-	if (display->changed_flags & VECTOR_PIXELS_CHANGED)
-	{
-		vector_pixel_t offset = VECTOR_PIXEL(gamerect.min_x, gamerect.min_y);
-		vector_pixel_t *list = display->vector_dirty_pixels;
-
-		/* 16/15bpp case */
-		if (bitmap->depth != 32)
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = palette[PIXEL(x,y,src,src,16)];
-			}
-		}
-
-		/* 32bpp case */
-		else
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = PIXEL(x,y,src,src,32);
-			}
-		}
-	}
-
 	/* 1x scale */
-	else if (gamescale == 1)
+	if (gamescale == 1)
 	{
 		/* 16/15bpp case */
 		if (bitmap->depth != 32)
@@ -1478,41 +1415,8 @@ static void render_game_bitmap_underlay(struct mame_bitmap *bitmap, const rgb_t 
 	dstbase = (UINT8 *)final->base + gamerect.min_y * final->rowbytes + gamerect.min_x * sizeof(UINT32);
 	undbase = (UINT8 *)underlay->base + gamerect.min_y * underlay->rowbytes + gamerect.min_x * sizeof(UINT32);
 
-	/* vector case */
-	if (display->changed_flags & VECTOR_PIXELS_CHANGED)
-	{
-		vector_pixel_t offset = VECTOR_PIXEL(gamerect.min_x, gamerect.min_y);
-		vector_pixel_t *list = display->vector_dirty_pixels;
-
-		/* 16/15bpp case */
-		if (bitmap->depth != 32)
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = add_and_clamp(palette[PIXEL(x,y,src,src,16)], PIXEL(x,y,und,dst,32));
-			}
-		}
-
-		/* 32bpp case */
-		else
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = add_and_clamp(PIXEL(x,y,src,src,32), PIXEL(x,y,und,dst,32));
-			}
-		}
-	}
-
 	/* 1x scale */
-	else if (gamescale == 1)
+	if (gamescale == 1)
 	{
 		/* 16/15bpp case */
 		if (bitmap->depth != 32)
@@ -1611,41 +1515,8 @@ static void render_game_bitmap_overlay(struct mame_bitmap *bitmap, const rgb_t *
 	overbase = (UINT8 *)overlay->base + gamerect.min_y * overlay->rowbytes + gamerect.min_x * sizeof(UINT32);
 	overyrgbbase = (UINT8 *)overlay_yrgb->base + gamerect.min_y * overlay_yrgb->rowbytes + gamerect.min_x * sizeof(UINT32);
 
-	/* vector case */
-	if (display->changed_flags & VECTOR_PIXELS_CHANGED)
-	{
-		vector_pixel_t offset = VECTOR_PIXEL(gamerect.min_x, gamerect.min_y);
-		vector_pixel_t *list = display->vector_dirty_pixels;
-
-		/* 16/15bpp case */
-		if (bitmap->depth != 32)
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = blend_over(palette[PIXEL(x,y,src,src,16)], PIXEL(x,y,over,dst,32), PIXEL(x,y,overyrgb,dst,32));
-			}
-		}
-
-		/* 32bpp case */
-		else
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = blend_over(PIXEL(x,y,src,src,32), PIXEL(x,y,over,dst,32), PIXEL(x,y,overyrgb,dst,32));
-			}
-		}
-	}
-
 	/* 1x scale */
-	else if (gamescale == 1)
+	if (gamescale == 1)
 	{
 		/* 16/15bpp case */
 		if (bitmap->depth != 32)
@@ -1752,41 +1623,8 @@ static void render_game_bitmap_underlay_overlay(struct mame_bitmap *bitmap, cons
 	overbase = (UINT8 *)overlay->base + gamerect.min_y * overlay->rowbytes + gamerect.min_x * sizeof(UINT32);
 	overyrgbbase = (UINT8 *)overlay_yrgb->base + gamerect.min_y * overlay_yrgb->rowbytes + gamerect.min_x * sizeof(UINT32);
 
-	/* vector case */
-	if (display->changed_flags & VECTOR_PIXELS_CHANGED)
-	{
-		vector_pixel_t offset = VECTOR_PIXEL(gamerect.min_x, gamerect.min_y);
-		vector_pixel_t *list = display->vector_dirty_pixels;
-
-		/* 16/15bpp case */
-		if (bitmap->depth != 32)
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = add_and_clamp(blend_over(palette[PIXEL(x,y,src,src,16)], PIXEL(x,y,over,dst,32), PIXEL(x,y,overyrgb,dst,32)), PIXEL(x,y,und,dst,32));
-			}
-		}
-
-		/* 32bpp case */
-		else
-		{
-			while (*list != VECTOR_PIXEL_END)
-			{
-				vector_pixel_t coords = *list;
-				x = VECTOR_PIXEL_X(coords);
-				y = VECTOR_PIXEL_Y(coords);
-				*list++ = coords + offset;
-				PIXEL(x,y,dst,dst,32) = add_and_clamp(blend_over(PIXEL(x,y,src,src,32), PIXEL(x,y,over,dst,32), PIXEL(x,y,overyrgb,dst,32)), PIXEL(x,y,und,dst,32));
-			}
-		}
-	}
-
 	/* 1x scale */
-	else if (gamescale == 1)
+	if (gamescale == 1)
 	{
 		/* 16/15bpp case */
 		if (bitmap->depth != 32)
