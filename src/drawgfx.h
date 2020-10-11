@@ -161,10 +161,6 @@ void pdrawgfx(struct mame_bitmap *dest,const struct GfxElement *gfx,
 		unsigned int code,unsigned int color,int flipx,int flipy,int sx,int sy,
 		const struct rectangle *clip,int transparency,int transparent_color,
 		UINT32 priority_mask);
-void mdrawgfx(struct mame_bitmap *dest,const struct GfxElement *gfx,
-		unsigned int code,unsigned int color,int flipx,int flipy,int sx,int sy,
-		const struct rectangle *clip,int transparency,int transparent_color,
-		UINT32 priority_mask);
 void copybitmap(struct mame_bitmap *dest,struct mame_bitmap *src,int flipx,int flipy,int sx,int sy,
 		const struct rectangle *clip,int transparency,int transparent_color);
 void copybitmap_remap(struct mame_bitmap *dest,struct mame_bitmap *src,int flipx,int flipy,int sx,int sy,
@@ -175,13 +171,8 @@ void copyscrollbitmap(struct mame_bitmap *dest,struct mame_bitmap *src,
 void copyscrollbitmap_remap(struct mame_bitmap *dest,struct mame_bitmap *src,
 		int rows,const int *rowscroll,int cols,const int *colscroll,
 		const struct rectangle *clip,int transparency,int transparent_color);
-void draw_scanline8(struct mame_bitmap *bitmap,int x,int y,int length,const UINT8 *src,pen_t *pens,int transparent_pen);
 void draw_scanline16(struct mame_bitmap *bitmap,int x,int y,int length,const UINT16 *src,pen_t *pens,int transparent_pen);
-void pdraw_scanline8(struct mame_bitmap *bitmap,int x,int y,int length,const UINT8 *src,pen_t *pens,int transparent_pen,int pri);
 void pdraw_scanline16(struct mame_bitmap *bitmap,int x,int y,int length,const UINT16 *src,pen_t *pens,int transparent_pen,int pri);
-void extract_scanline8(struct mame_bitmap *bitmap,int x,int y,int length,UINT8 *dst);
-void extract_scanline16(struct mame_bitmap *bitmap,int x,int y,int length,UINT16 *dst);
-
 
 /* Alpha blending functions */
 extern int alpha_active;
@@ -227,50 +218,7 @@ static INLINE UINT32 alpha_blend_r32( UINT32 d, UINT32 s, UINT8 level )
 		+ (alphad[d & 0xff] | (alphad[(d>>8) & 0xff] << 8) | (alphad[(d>>16) & 0xff] << 16));
 }
 
-/*
-  Copy a bitmap applying rotation, zooming, and arbitrary distortion.
-  This function works in a way that mimics some real hardware like the Konami
-  051316, so it requires little or no further processing on the caller side.
-
-  Two 16.16 fixed point counters are used to keep track of the position on
-  the source bitmap. startx and starty are the initial values of those counters,
-  indicating the source pixel that will be drawn at coordinates (0,0) in the
-  destination bitmap. The destination bitmap is scanned left to right, top to
-  bottom; every time the cursor moves one pixel to the right, incxx is added
-  to startx and incxy is added to starty. Every time the cursor moves to the
-  next line, incyx is added to startx and incyy is added to startyy.
-
-  What this means is that if incxy and incyx are both 0, the bitmap will be
-  copied with only zoom and no rotation. If e.g. incxx and incyy are both 0x8000,
-  the source bitmap will be doubled.
-
-  Rotation is performed this way:
-  incxx = 0x10000 * cos(theta)
-  incxy = 0x10000 * -sin(theta)
-  incyx = 0x10000 * sin(theta)
-  incyy = 0x10000 * cos(theta)
-  this will perform a rotation around (0,0), you'll have to adjust startx and
-  starty to move the center of rotation elsewhere.
-
-  Optionally the bitmap can be tiled across the screen instead of doing a single
-  copy. This is obtained by setting the wraparound parameter to true.
- */
-void copyrozbitmap(struct mame_bitmap *dest,struct mame_bitmap *src,
-		UINT32 startx,UINT32 starty,int incxx,int incxy,int incyx,int incyy,int wraparound,
-		const struct rectangle *clip,int transparency,int transparent_color,UINT32 priority);
-
 void fillbitmap(struct mame_bitmap *dest,pen_t pen,const struct rectangle *clip);
-void drawgfxzoom( struct mame_bitmap *dest_bmp,const struct GfxElement *gfx,
-		unsigned int code,unsigned int color,int flipx,int flipy,int sx,int sy,
-		const struct rectangle *clip,int transparency,int transparent_color,int scalex,int scaley);
-void pdrawgfxzoom( struct mame_bitmap *dest_bmp,const struct GfxElement *gfx,
-		unsigned int code,unsigned int color,int flipx,int flipy,int sx,int sy,
-		const struct rectangle *clip,int transparency,int transparent_color,int scalex,int scaley,
-		UINT32 priority_mask);
-void mdrawgfxzoom( struct mame_bitmap *dest_bmp,const struct GfxElement *gfx,
-		unsigned int code,unsigned int color,int flipx,int flipy,int sx,int sy,
-		const struct rectangle *clip,int transparency,int transparent_color,int scalex,int scaley,
-		UINT32 priority_mask);
 
 void drawgfx_toggle_crosshair(void);
 void draw_crosshair(struct mame_bitmap *bitmap,int x,int y,const struct rectangle *clip);
