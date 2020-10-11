@@ -105,10 +105,12 @@
 		- exits the program
 
 ***************************************************************************/
-
-#include "driver.h"
 #include <ctype.h>
 #include <stdarg.h>
+
+#include <retro_inline.h>
+
+#include "driver.h"
 #include "ui_text.h"
 #include "mamedbg.h"
 #include "artwork.h"
@@ -238,7 +240,7 @@ static void scale_vectorgames(int gfx_width, int gfx_height, int *width, int *he
 	printed
 -------------------------------------------------*/
 
-INLINE void bail_and_print(const char *message)
+static INLINE void bail_and_print(const char *message)
 {
 	if (!bailing)
 	{

@@ -33,6 +33,8 @@
 #if !(defined xgl)
 
 #include <math.h>
+#include <retro_inline.h>
+
 #include "osinline.h"
 #include "driver.h"
 #include "osdepend.h"
@@ -103,7 +105,7 @@ void vector_register_aux_renderer(int (*aux_renderer)(point *start, int num_poin
  * can be be replaced by an assembly routine in osinline.h
  */
 #ifndef vec_mult
-INLINE int vec_mult(int parm1, int parm2)
+static INLINE int vec_mult(int parm1, int parm2)
 {
 	int temp,result;
 
@@ -124,7 +126,7 @@ INLINE int vec_mult(int parm1, int parm2)
 
 /* can be be replaced by an assembly routine in osinline.h */
 #ifndef vec_div
-INLINE int vec_div(int parm1, int parm2)
+static INLINE int vec_div(int parm1, int parm2)
 {
 	if( (parm2>>12) )
 	{

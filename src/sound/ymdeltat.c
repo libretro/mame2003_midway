@@ -62,6 +62,8 @@
 **
 */
 
+#include <retro_inline.h>
+
 #include "driver.h"
 #include "state.h"
 #include "ymdeltat.h"
@@ -459,7 +461,7 @@ void YM_DELTAT_savestate(const char *statename,int num,YM_DELTAT *DELTAT)
 	else if ( val < min ) val = min;	\
 }
 
-INLINE void YM_DELTAT_synthesis_from_external_memory(YM_DELTAT *DELTAT)
+static INLINE void YM_DELTAT_synthesis_from_external_memory(YM_DELTAT *DELTAT)
 {
 	UINT32 step;
 	int data;
@@ -539,9 +541,7 @@ INLINE void YM_DELTAT_synthesis_from_external_memory(YM_DELTAT *DELTAT)
 	*(DELTAT->pan) += DELTAT->adpcml;
 }
 
-
-
-INLINE void YM_DELTAT_synthesis_from_CPU_memory(YM_DELTAT *DELTAT)
+static INLINE void YM_DELTAT_synthesis_from_CPU_memory(YM_DELTAT *DELTAT)
 {
 	UINT32 step;
 	int data;

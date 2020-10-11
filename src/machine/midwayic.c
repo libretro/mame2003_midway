@@ -3,13 +3,15 @@
 	Emulation of various Midway ICs
 
 ***************************************************************************/
+#include <time.h>
+
+#include <retro_inline.h>
 
 #include "driver.h"
 #include "midwayic.h"
 #include "machine/idectrl.h"
 #include "sndhrdw/cage.h"
 #include "sndhrdw/dcs.h"
-#include <time.h>
 
 
 #define LOG_NVRAM			(0)
@@ -225,7 +227,7 @@ void midway_serial_pic_w(UINT8 data)
  *
  *************************************/
 
-INLINE UINT8 make_bcd(UINT8 data)
+static INLINE UINT8 make_bcd(UINT8 data)
 {
 	return ((data / 10) << 4) | (data % 10);
 }

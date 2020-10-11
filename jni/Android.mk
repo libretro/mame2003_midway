@@ -30,6 +30,6 @@ LOCAL_SRC_FILES    += $(SOURCES_C)
 LOCAL_C_INCLUDES = $(INCFLAGS)
 
 LOCAL_CFLAGS += $(DEFS) $(COREDEFS) $(CPUDEFS) $(SOUNDDEFS) $(ASMDEFS) $(DBGDEFS)
-LOCAL_CFLAGS += -O3 -std=gnu99 -ffast-math -funroll-loops -Dstricmp=strcasecmp -DINLINE="static inline" -DANDROID $(INCFLAGS)
+LOCAL_CFLAGS += -O3 -std=gnu99 -ffast-math -funroll-loops -Dstricmp=strcasecmp -DANDROID $(INCFLAGS)
 
 include $(BUILD_SHARED_LIBRARY)

@@ -75,6 +75,8 @@ CPUS+=ADSP2101@
 CPUS+=ADSP2104@
 CPUS+=ADSP2105@
 CPUS+=ADSP2115@
+CPUS+=TMS32010@
+CPUS+=TMS32031@
 
 # uncomment the following lines to include a sound core
 SOUNDS+=CUSTOM@
@@ -90,11 +92,19 @@ SOUNDS+=OKIM6295@
 SOUNDS+=HC55516@
 
 SOURCES_C +=  \
-				 $(CORE_DIR)/machine/midwayic.c $(CORE_DIR)/sndhrdw/dcs.c $(CORE_DIR)/sndhrdw/williams_sndhrdw.c \
-				 $(CORE_DIR)/machine/midyunit_machine.c $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c $(CORE_DIR)/drivers/midyunit.c \
+				 $(CORE_DIR)/machine/midwayic.c \
+				 $(CORE_DIR)/sndhrdw/dcs.c \
+				 $(CORE_DIR)/sndhrdw/cage_sndhrdw.c \
+				 $(CORE_DIR)/sndhrdw/williams_sndhrdw.c \
+				 $(CORE_DIR)/machine/midyunit_machine.c \
+				 $(CORE_DIR)/vidhrdw/midyunit_vidhrdw.c \
+				 $(CORE_DIR)/drivers/midyunit.c \
 				 $(CORE_DIR)/drivers/midxunit.c \
-				 $(CORE_DIR)/machine/midwunit_machine.c $(CORE_DIR)/drivers/midwunit.c \
-				 $(CORE_DIR)/machine/midtunit_machine.c $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c $(CORE_DIR)/drivers/midtunit.c
+				 $(CORE_DIR)/machine/midwunit_machine.c \
+				 $(CORE_DIR)/drivers/midwunit.c \
+				 $(CORE_DIR)/machine/midtunit_machine.c \
+				 $(CORE_DIR)/vidhrdw/midtunit_vidhrdw.c \
+				 $(CORE_DIR)/drivers/midtunit.c
 
 SOURCES_C += $(CORE_DIR)/driver.c $(CORE_DIR)/cheat.c
 

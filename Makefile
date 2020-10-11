@@ -281,8 +281,7 @@ LDFLAGS += $(LIBM)
 
 # build the targets in different object dirs, since mess changes
 # some structures and thus they can't be linked against each other.
-DEFS = -DINLINE="static __inline__" -Dasm=__asm__
-
+DEFS = -Dasm=__asm__
 
 RETRO_PROFILE = 0
 CFLAGS += -DRETRO_PROFILE=$(RETRO_PROFILE)
@@ -325,34 +324,16 @@ OBJECTS := $(SOURCES_C:.c=.o)
 all:	$(TARGET)
 $(TARGET): $(OBJECTS)
 ifeq ($(STATIC_LINKING),1)
-	@echo Archiving $@...
 	$(AR) rcs $@ $(foreach OBJECTS,$(OBJECTS),&& $(AR) q $@ $(OBJECTS))
 else
-	@echo Linking $@...
-ifeq ($(platform),win)	
-	# Use a temporary file to hold the list of objects, as it can exceed windows shell command limits
-	$(file >$@.in,$(OBJECTS))
-	$(CC) $(CDEFS) $(CFLAGSOSDEPEND) $(PLATCFLAGS) $(LDFLAGS) -o $@ @$@.in $(LIBS)
-	@rm $@.in
-else
 	$(CC) $(CDEFS) $(CFLAGSOSDEPEND) $(PLATCFLAGS) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
-endif
 endif
 
 %.o: %.c
 	$(CC) $(CDEFS) $(CFLAGS) $(PLATCFLAGS) -c -o $@ $<
 
 $(OBJ)/%.a:
-	@echo Archiving $@...
 	$(RM) $@
-	$(AR) cr $@ $^
 
 clean:
-ifeq ($(platform),win)	
-	# Use a temporary file to hold the list of objects, as it can exceed windows shell command limits
-	$(file >$@.in,$(OBJECTS))
-	rm -f @$@.in $(TARGET)
-	@rm $@.in
-else
 	rm -f $(OBJECTS) $(TARGET)
-endif

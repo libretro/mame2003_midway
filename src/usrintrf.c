@@ -7,13 +7,15 @@
 	Functions used to handle MAME's user interface.
 
 *********************************************************************/
+#include <stdarg.h>
+#include <math.h>
+
+#include <retro_inline.h>
 
 #include "driver.h"
 #include "info.h"
 #include "vidhrdw/vector.h"
 #include "datafile.h"
-#include <stdarg.h>
-#include <math.h>
 #include "ui_text.h"
 
 #ifdef MESS
@@ -233,7 +235,7 @@ static const struct GfxLayout uifontlayout =
 	ui_markdirty - mark a raw rectangle dirty
 -------------------------------------------------*/
 
-INLINE void ui_markdirty(const struct rectangle *rect)
+static INLINE void ui_markdirty(const struct rectangle *rect)
 {
 	artwork_mark_ui_dirty(rect->min_x, rect->min_y, rect->max_x, rect->max_y);
 	ui_dirty = 5;

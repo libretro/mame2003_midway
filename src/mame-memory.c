@@ -15,12 +15,14 @@
 	See machine/tnzs.c for an example.
 
 ***************************************************************************/
+#include <stdarg.h>
+
+#include <retro_inline.h>
 
 #include "driver.h"
 #include "osd_cpu.h"
 #include "state.h"
 
-#include <stdarg.h>
 
 
 //#define MEM_DUMP
@@ -2597,13 +2599,12 @@ int port_address_bits_of_cpu(int cputype)
 	basic static handlers
 -------------------------------------------------*/
 
-INLINE offs_t effective_offset(offs_t offset)
+static INLINE offs_t effective_offset(offs_t offset)
 {
 	int shift = activecpu_address_shift();
 	if (shift < 0)
 		return offset >> -shift;
-	else
-		return offset << shift;
+   return offset << shift;
 }
 
 static READ_HANDLER( mrh8_bad )

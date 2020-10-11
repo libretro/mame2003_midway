@@ -1,6 +1,8 @@
 #ifndef OSDEPEND_H
 #define OSDEPEND_H
 
+#include <retro_inline.h>
+
 #include "osd_cpu.h"
 #include "inptport.h"
 
@@ -392,11 +394,7 @@ int osd_net_game_exit(void);
 #include "osd_mess.h"
 #endif
 
-#ifdef __GNUC__
-INLINE void CLIB_DECL logerror(const char *text,...) __attribute__ ((format (printf, 1, 2)));
-#endif
-
-INLINE void CLIB_DECL logerror(const char *text,...)
+static INLINE void CLIB_DECL logerror(const char *text,...)
 {
 #ifdef DEBUG_LOG
     va_list args;

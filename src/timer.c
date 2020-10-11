@@ -30,6 +30,8 @@
 
 ***************************************************************************/
 
+#include <retro_inline.h>
+
 #include "cpuintrf.h"
 #include "driver.h"
 #include "timer.h"
@@ -95,7 +97,7 @@ static double callback_timer_expire_time;
 	relative to the global_offset
 -------------------------------------------------*/
 
-INLINE double get_relative_time(void)
+static INLINE double get_relative_time(void)
 {
 	int activecpu;
 
@@ -118,7 +120,7 @@ INLINE double get_relative_time(void)
 	timer_new - allocate a new timer
 -------------------------------------------------*/
 
-INLINE mame_timer *timer_new(void)
+static INLINE mame_timer *timer_new(void)
 {
 	mame_timer *timer;
 
@@ -140,7 +142,7 @@ INLINE mame_timer *timer_new(void)
 	the list at the appropriate location
 -------------------------------------------------*/
 
-INLINE void timer_list_insert(mame_timer *timer)
+static INLINE void timer_list_insert(mame_timer *timer)
 {
 	double expire = timer->enabled ? timer->expire : TIME_NEVER;
 	mame_timer *t, *lt = NULL;
@@ -183,7 +185,7 @@ INLINE void timer_list_insert(mame_timer *timer)
 	linked list
 -------------------------------------------------*/
 
-INLINE void timer_list_remove(mame_timer *timer)
+static INLINE void timer_list_remove(mame_timer *timer)
 {
 	/* remove it from the list */
 	if (timer->prev)

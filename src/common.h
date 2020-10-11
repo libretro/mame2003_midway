@@ -9,6 +9,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <retro_inline.h>
+
 #include "hash.h"
 
 #ifdef __cplusplus
@@ -421,7 +423,8 @@ void bitmap_free(struct mame_bitmap *bitmap);
 /* automatic resource management */
 void begin_resource_tracking(void);
 void end_resource_tracking(void);
-INLINE int get_resource_tag(void)
+
+static INLINE int get_resource_tag(void)
 {
 	extern int resource_tracking_tag;
 	return resource_tracking_tag;

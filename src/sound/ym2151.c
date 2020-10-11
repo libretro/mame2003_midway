@@ -9,6 +9,8 @@
 #include <string.h>
 #include <math.h>
 
+#include <retro_inline.h>
+
 #include "driver.h"
 #include "state.h"
 #include "ym2151.h"
@@ -19,7 +21,6 @@
 
 /*#define FM_EMU*/
 #ifdef FM_EMU
-	#define INLINE static __inline__
 	#ifdef USE_MAME_TIMERS
 		#undef USE_MAME_TIMERS
 	#endif
@@ -762,7 +763,7 @@ static void init_chip_tables(YM2151 *chip)
 		}														\
 }
 
-INLINE void envelope_KONKOFF(YM2151Operator * op, int v)
+static INLINE void envelope_KONKOFF(YM2151Operator * op, int v)
 {
 	if (v&0x08)	/* M1 */
 		KEY_ON (op+0, 1)
@@ -822,12 +823,7 @@ static void timer_callback_chip_busy (int n)
 #endif
 #endif
 
-
-
-
-
-
-INLINE void set_connect( YM2151Operator *om1, int cha, int v)
+static INLINE void set_connect( YM2151Operator *om1, int cha, int v)
 {
 	YM2151Operator *om2 = om1+1;
 	YM2151Operator *oc1 = om1+2;
@@ -918,8 +914,7 @@ INLINE void set_connect( YM2151Operator *om1, int cha, int v)
 	}
 }
 
-
-INLINE void refresh_EG(YM2151Operator * op)
+static INLINE void refresh_EG(YM2151Operator * op)
 {
 	UINT32 kc;
 	UINT32 v;
@@ -1618,9 +1613,7 @@ void YM2151ResetChip(int num)
 	}
 }
 
-
-
-INLINE signed int op_calc(YM2151Operator * OP, unsigned int env, signed int pm)
+static INLINE signed int op_calc(YM2151Operator * OP, unsigned int env, signed int pm)
 {
 	UINT32 p;
 
@@ -1633,7 +1626,7 @@ INLINE signed int op_calc(YM2151Operator * OP, unsigned int env, signed int pm)
 	return tl_tab[p];
 }
 
-INLINE signed int op_calc1(YM2151Operator * OP, unsigned int env, signed int pm)
+static INLINE signed int op_calc1(YM2151Operator * OP, unsigned int env, signed int pm)
 {
 	UINT32 p;
 	INT32  i;
@@ -1657,7 +1650,7 @@ INLINE signed int op_calc1(YM2151Operator * OP, unsigned int env, signed int pm)
 
 #define volume_calc(OP) ((OP)->tl + ((UINT32)(OP)->volume) + (AM & (OP)->AMmask))
 
-INLINE void chan_calc(unsigned int chan)
+static INLINE void chan_calc(unsigned int chan)
 {
 	YM2151Operator *op;
 	unsigned int env;
@@ -1706,7 +1699,8 @@ INLINE void chan_calc(unsigned int chan)
 	/* M1 */
 	op->mem_value = mem;
 }
-INLINE void chan7_calc(void)
+
+static INLINE void chan7_calc(void)
 {
 	YM2151Operator *op;
 	unsigned int env;
@@ -1976,7 +1970,7 @@ rate 11 1         |
                                  --
 */
 
-INLINE void advance_eg(void)
+static INLINE void advance_eg(void)
 {
 	YM2151Operator *op;
 	unsigned int i;
@@ -2060,7 +2054,7 @@ INLINE void advance_eg(void)
 }
 
 
-INLINE void advance(void)
+static INLINE void advance(void)
 {
 	YM2151Operator *op;
 	unsigned int i;
@@ -2241,7 +2235,7 @@ INLINE void advance(void)
 }
 
 #if 0
-INLINE signed int acc_calc(signed int value)
+static INLINE signed int acc_calc(signed int value)
 {
 	if (value>=0)
 	{
