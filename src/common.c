@@ -691,18 +691,6 @@ void auto_free(void)
 	}
 }
 
-
-/*-------------------------------------------------
-	bitmap_alloc - allocate a bitmap at the
-	current screen depth
--------------------------------------------------*/
-
-struct mame_bitmap *auto_bitmap_alloc(int width,int height)
-{
-	return bitmap_alloc_core(width,height,Machine->scrbitmap->depth,1);
-}
-
-
 /*-------------------------------------------------
 	bitmap_alloc_depth - allocate a bitmap for a
 	specific depth
