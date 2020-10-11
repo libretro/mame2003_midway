@@ -1643,9 +1643,8 @@ else
 SOUNDDEFS += -DHAS_YMF271=0
 endif
 
-ifeq ($(STATIC_LINKING),1)
 INCFLAGS += -I$(CORE_DIR)/libretro/includes/zlib
-else
+ifneq ($(STATIC_LINKING),1)
 SOURCES_C += $(CORE_DIR)/../deps/zlib/adler32.c \
 				 $(CORE_DIR)/../deps/zlib/compress.c \
 				 $(CORE_DIR)/../deps/zlib/crc32.c \
