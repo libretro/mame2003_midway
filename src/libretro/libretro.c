@@ -17,7 +17,7 @@ int stricmp(const char *string1, const char *string2)
 void mame_frame(void);
 void mame_done(void);
 
-#if defined(__CELLOS_LV2__) || defined(GEKKO) || defined(_XBOX)
+#if defined(__PS3__) || defined(GEKKO) || defined(_XBOX)
 unsigned activate_dcs_speedhack = 1;
 #else
 unsigned activate_dcs_speedhack = 0;
@@ -42,7 +42,7 @@ void retro_set_environment(retro_environment_t cb)
    static const struct retro_variable vars[] = {
       { "mame2003-frameskip", "Frameskip; 0|1|2|3|4|5" },
       { "mame2003-dcs-speedhack",
-#if defined(__CELLOS_LV2__) || defined(GEKKO) || defined(_XBOX)
+#if defined(__PS3__) || defined(GEKKO) || defined(_XBOX)
          "MK2/MK3 DCS Speedhack; disabled|enabled"
 #else
          "MK2/MK3 DCS Speedhack; enabled|disabled"

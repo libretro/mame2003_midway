@@ -162,29 +162,13 @@ else ifeq ($(platform), wiiu)
    PLATCFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
    STATIC_LINKING = 1
 
-else ifeq ($(platform), ps3)
-   TARGET = $(TARGET_NAME)_libretro_$(platform).a
-   BIGENDIAN = 1
-    
-   CC = $(CELL_SDK)/host-win32/ppu/bin/ppu-lv2-gcc.exe
-   AR = $(CELL_SDK)/host-win32/ppu/bin/ppu-lv2-ar.exe
-   PLATCFLAGS += -D__CELLOS_LV2__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
-   STATIC_LINKING = 1
-else ifeq ($(platform), sncps3)
-   TARGET = $(TARGET_NAME)_libretro_ps3.a
-   BIGENDIAN = 1
-    
-   CC = $(CELL_SDK)/host-win32/sn/bin/ps3ppusnc.exe
-   AR = $(CELL_SDK)/host-win32/sn/bin/ps3snarl.exe
-   PLATCFLAGS += -D__CELLOS_LV2__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
-   STATIC_LINKING = 1
 else ifeq ($(platform), psl1ght)
    TARGET = $(TARGET_NAME)_libretro_$(platform).a
    BIGENDIAN = 1
     
    CC = $(PS3DEV)/ppu/bin/ppu-gcc$
    AR = $(PS3DEV)/ppu/bin/ppu-ar$
-   PLATCFLAGS += -D__CELLOS_LV2__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
+   PLATCFLAGS += -D__PSL1GHT__ -D__PS3__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
    STATIC_LINKING = 1
 else ifeq ($(platform), psp1)
 	TARGET = $(TARGET_NAME)_libretro_$(platform).a
