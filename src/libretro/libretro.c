@@ -482,7 +482,7 @@ bool retro_load_game(const struct retro_game_info *game)
     // Find game index
     driverIndex = getDriverIndex(game->path);
     
-    if(driverIndex)
+    if(driverIndex > 0)
     {
         fallbackDir = strdup(game->path);
         int orientation;
