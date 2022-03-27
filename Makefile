@@ -162,14 +162,17 @@ else ifeq ($(platform), wiiu)
    PLATCFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
    STATIC_LINKING = 1
 
-else ifeq ($(platform), psl1ght)
+else ifneq (,$(filter $(platform), ps3 psl1ght))
    TARGET = $(TARGET_NAME)_libretro_$(platform).a
    BIGENDIAN = 1
     
-   CC = $(PS3DEV)/ppu/bin/ppu-gcc$
-   AR = $(PS3DEV)/ppu/bin/ppu-ar$
-   PLATCFLAGS += -D__PSL1GHT__ -D__PS3__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
+   CC = $(PS3DEV)/ppu/bin/ppu-$(COMMONLV)gcc$(EXE_EXT)
+   AR = $(PS3DEV)/ppu/bin/ppu-$(COMMONLV)ar$(EXE_EXT)
+   PLATCFLAGS += -D__PS3__ -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
    STATIC_LINKING = 1
+   ifeq ($(platform), psl1ght)
+        PLATCFLAGS += -D__PSL1GHT__
+   endif
 else ifeq ($(platform), psp1)
 	TARGET = $(TARGET_NAME)_libretro_$(platform).a
 
