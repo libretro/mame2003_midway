@@ -13,6 +13,7 @@
 #include <retro_inline.h>
 
 #include "driver.h"
+#include "artwork.h"
 #include "info.h"
 #include "datafile.h"
 #include "ui_text.h"
