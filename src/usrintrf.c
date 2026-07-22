@@ -16,6 +16,7 @@
 #include "info.h"
 #include "datafile.h"
 #include "ui_text.h"
+#include "artwork.h"
 
 #ifdef MESS
   #include "mess.h"
