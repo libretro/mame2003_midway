@@ -1643,21 +1643,19 @@ SOUNDDEFS += -DHAS_YMF271=0
 endif
 
 INCFLAGS += -I$(CORE_DIR)/libretro/includes/zlib
-ifneq ($(STATIC_LINKING),1)
 SOURCES_C += $(CORE_DIR)/../deps/zlib/adler32.c \
-				 $(CORE_DIR)/../deps/zlib/compress.c \
-				 $(CORE_DIR)/../deps/zlib/crc32.c \
-				 $(CORE_DIR)/../deps/zlib/deflate.c \
-				 $(CORE_DIR)/../deps/zlib/gzclose.c \
-				 $(CORE_DIR)/../deps/zlib/gzlib.c \
-				 $(CORE_DIR)/../deps/zlib/gzread.c \
-				 $(CORE_DIR)/../deps/zlib/gzwrite.c \
-				 $(CORE_DIR)/../deps/zlib/inffast.c \
-				 $(CORE_DIR)/../deps/zlib/inflate.c \
-				 $(CORE_DIR)/../deps/zlib/inftrees.c \
-				 $(CORE_DIR)/../deps/zlib/trees.c \
-				 $(CORE_DIR)/../deps/zlib/uncompr.c \
-				 $(CORE_DIR)/../deps/zlib/zutil.c \
-				 $(CORE_DIR)/../deps/zlib/ioapi.c \
-				 $(CORE_DIR)/../deps/zlib/unzip.c
-endif
+	     $(CORE_DIR)/../deps/zlib/compress.c \
+	     $(CORE_DIR)/../deps/zlib/crc32.c \
+	     $(CORE_DIR)/../deps/zlib/deflate.c \
+	     $(CORE_DIR)/../deps/zlib/gzclose.c \
+	     $(CORE_DIR)/../deps/zlib/gzlib.c \
+	     $(CORE_DIR)/../deps/zlib/gzread.c \
+	     $(CORE_DIR)/../deps/zlib/gzwrite.c \
+	     $(CORE_DIR)/../deps/zlib/inffast.c \
+	     $(CORE_DIR)/../deps/zlib/inflate.c \
+	     $(CORE_DIR)/../deps/zlib/inftrees.c \
+	     $(CORE_DIR)/../deps/zlib/trees.c \
+	     $(CORE_DIR)/../deps/zlib/uncompr.c \
+	     $(CORE_DIR)/../deps/zlib/zutil.c \
+	     $(CORE_DIR)/../deps/zlib/ioapi.c \
+	     $(CORE_DIR)/../deps/zlib/unzip.c
