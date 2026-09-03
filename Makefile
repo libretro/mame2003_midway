@@ -87,6 +87,22 @@ else
    LD += -miphoneos-version-min=5.0
 endif
 
+# tvOS (AppleTV)
+else ifeq ($(platform), tvos-arm64)
+   TARGET = $(TARGET_NAME)_libretro_tvos.dylib
+   fpic = -fPIC
+   CFLAGS += $(fpic) -Dstricmp=strcasecmp
+   LDFLAGS += $(fpic) -dynamiclib
+   PLATCFLAGS += -D__IOS__
+
+ifeq ($(IOSSDK),)
+   IOSSDK := $(shell xcodebuild -version -sdk appletvos Path)
+endif
+
+   fpic += -mappletvos-version-min=11.0
+   CC = cc -arch arm64 -isysroot $(IOSSDK) -mappletvos-version-min=11.0
+   LD = cc -arch arm64 -isysroot $(IOSSDK) -mappletvos-version-min=11.0
+
 else ifeq ($(platform), ctr)
    TARGET = $(TARGET_NAME)_libretro_$(platform).a
    CC = $(DEVKITARM)/bin/arm-none-eabi-gcc$(EXE_EXT)
@@ -152,6 +168,16 @@ else ifeq ($(platform), wii)
    PLATCFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
    STATIC_LINKING = 1
 
+else ifeq ($(platform), ngc)
+   TARGET = $(TARGET_NAME)_libretro_$(platform).a
+   BIGENDIAN = 1
+
+   CC = $(DEVKITPPC)/bin/powerpc-eabi-gcc$(EXE_EXT)
+   AR = $(DEVKITPPC)/bin/powerpc-eabi-ar$(EXE_EXT)
+   PLATCFLAGS += -DGEKKO -DHW_DOL -mrvl -mcpu=750 -meabi -mhard-float -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
+   PLATCFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
+   STATIC_LINKING = 1
+
 else ifeq ($(platform), wiiu)
    TARGET = $(TARGET_NAME)_libretro_$(platform).a
    BIGENDIAN = 1
@@ -161,6 +187,15 @@ else ifeq ($(platform), wiiu)
    PLATCFLAGS += -DGEKKO -DWIIU -D__wiiu__ -DHW_WUP -ffunction-sections -fdata-sections
    PLATCFLAGS += -mcpu=750 -meabi -mhard-float -D__ppc__ -D__POWERPC__ -Dstricmp=strcasecmp
    PLATCFLAGS += -U__INT32_TYPE__ -U __UINT32_TYPE__ -D__INT32_TYPE__=int
+   STATIC_LINKING = 1
+
+else ifeq ($(platform), libnx)
+   include $(DEVKITPRO)/libnx/switch_rules
+   TARGET = $(TARGET_NAME)_libretro_$(platform).a
+
+   PLATCFLAGS += -D__SWITCH__ -DSWITCH=1 -U__linux__ -U__linux -Dstricmp=strcasecmp
+   CFLAGS += -fPIE -I$(LIBNX)/include/ -ffunction-sections -fdata-sections -fcommon
+   CFLAGS += -ftls-model=local-exec -specs=$(LIBNX)/switch.specs
    STATIC_LINKING = 1
 
 else ifneq (,$(filter $(platform), ps3 psl1ght))
@@ -281,6 +316,9 @@ RETRO_PROFILE = 0
 CFLAGS += -DRETRO_PROFILE=$(RETRO_PROFILE)
 
 ifneq ($(platform), sncps3)
+# UINT32 is unsigned long in newlib's arm headers but unsigned int
+# elsewhere, which src/config.c mixes up; gcc 14 made that an error.
+CFLAGS += -Wno-error=incompatible-pointer-types
 CFLAGS += -Wall -Wno-sign-compare -Wunused \
 	-Wpointer-arith -Wbad-function-cast -Wcast-align -Waggregate-return \
 	-Wshadow -Wstrict-prototypes \
