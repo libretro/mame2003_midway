@@ -60,9 +60,25 @@ include:
     file: '/tvos-arm64.yml'
     
   ################################## CONSOLES ################################
+  # Nintendo 3DS
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/ctr-static.yml'
+
   # Nintendo WiiU
   - project: 'libretro-infrastructure/ci-templates'
     file: '/wiiu-static.yml'
+
+  # Nintendo Switch
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/libnx-static.yml'
+
+  # Nintendo Wii
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/wii-static.yml'
+
+  # Nintendo GameCube
+  - project: 'libretro-infrastructure/ci-templates'
+    file: '/ngc-static.yml'
 
   #################################### MISC ##################################
   # webOS 32-bit (LGTV)
@@ -166,10 +182,34 @@ libretro-build-tvos-arm64:
     - .core-defs
 
 ################################## CONSOLES ################################
+# Nintendo 3DS
+libretro-build-ctr:
+  extends:
+    - .libretro-ctr-static-retroarch-master
+    - .core-defs
+
 # Nintendo WiiU
 libretro-build-wiiu:
   extends:
     - .libretro-wiiu-static-retroarch-master
+    - .core-defs
+
+# Nintendo Switch
+libretro-build-libnx-aarch64:
+  extends:
+    - .libretro-libnx-static-retroarch-master
+    - .core-defs
+
+# Nintendo Wii
+libretro-build-wii:
+  extends:
+    - .libretro-wii-static-retroarch-master
+    - .core-defs
+
+# Nintendo GameCube
+libretro-build-ngc:
+  extends:
+    - .libretro-ngc-static-retroarch-master
     - .core-defs
 
 ################################### MISC ####################################
