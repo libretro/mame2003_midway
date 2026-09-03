@@ -316,6 +316,9 @@ RETRO_PROFILE = 0
 CFLAGS += -DRETRO_PROFILE=$(RETRO_PROFILE)
 
 ifneq ($(platform), sncps3)
+# UINT32 is unsigned long in newlib's arm headers but unsigned int
+# elsewhere, which src/config.c mixes up; gcc 14 made that an error.
+CFLAGS += -Wno-error=incompatible-pointer-types
 CFLAGS += -Wall -Wno-sign-compare -Wunused \
 	-Wpointer-arith -Wbad-function-cast -Wcast-align -Waggregate-return \
 	-Wshadow -Wstrict-prototypes \
