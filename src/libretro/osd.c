@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#ifdef _WIN32
+#include <direct.h>
+#endif
 #ifndef _WIN32
 #include <sys/time.h>
 #endif
